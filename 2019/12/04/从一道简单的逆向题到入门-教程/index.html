@@ -5,17 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Windows进程控制 - RGDZ&#39;s blog</title>
+    <title>从一道简单的逆向题到入门-教程 - RGDZ&#39;s blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
-    <meta name="description" content="RGDZ&#39;s blog,Windows进程控制程序入口
+    <meta name="description" content="RGDZ&#39;s blog,从一道简单的逆向题到入门-教程前言：
+Blog重建，丢失好多帖子，找个机会补一篇Linux的逆向分析入门，给小白入门学习用，大佬绕过。
 
 
-获取系统版本信息OSVERSIONINFO vs = {sizeof(vs)};
-GetVersionEx(&amp;amp;vs);
-DWORD dwBaseAddr;,"> 
+朋友喊帮忙看看,就顺手写下一篇逆向入门教程吧
+
+分析初步分,"> 
     <meta name="author" content="RGDZ"> 
     <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -48,7 +49,7 @@ DWORD dwBaseAddr;,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://yoursite.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Windows进程控制</h3>
+        <h3 class="subtitle">从一道简单的逆向题到入门-教程</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -78,25 +79,25 @@ DWORD dwBaseAddr;,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/编程"><b>「
-                    </b>编程<b> 」</b></a>
+                <a href="/categories/分类1"><b>「
+                    </b>分类1<b> 」</b></a>
                 
-                七月 11, 2019
+                十二月 04, 2019
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/07/11/Windows%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6/" title="Windows进程控制" class="">Windows进程控制</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/12/04/%E4%BB%8E%E4%B8%80%E9%81%93%E7%AE%80%E5%8D%95%E7%9A%84%E9%80%86%E5%90%91%E9%A2%98%E5%88%B0%E5%85%A5%E9%97%A8-%E6%95%99%E7%A8%8B/" title="从一道简单的逆向题到入门-教程" class="">从一道简单的逆向题到入门-教程</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    4.8k
+                    5.8k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    4 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -109,7 +110,7 @@ DWORD dwBaseAddr;,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/C-C/" rel="tag">C/C++</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Win32/" rel="tag">Win32</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E8%BF%9B%E7%A8%8B%E5%AF%B9%E8%B1%A1/" rel="tag">进程对象</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%A0%87%E7%AD%BE1/" rel="tag">标签1</a></li></ul>
             
         </div>
     </div>
@@ -130,122 +131,132 @@ DWORD dwBaseAddr;,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="Windows进程控制"><a href="#Windows进程控制" class="headerlink" title="Windows进程控制"></a>Windows进程控制</h1><h2 id="程序入口"><a href="#程序入口" class="headerlink" title="程序入口"></a>程序入口</h2><blockquote>
-<p><img src="%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3.png" alt="程序入口"></p>
-</blockquote>
-<h2 id="获取系统版本信息"><a href="#获取系统版本信息" class="headerlink" title="获取系统版本信息"></a>获取系统版本信息</h2><pre><code class="c++">OSVERSIONINFO vs = {sizeof(vs)};
-GetVersionEx(&amp;vs);
-DWORD dwBaseAddr;
-
-if(vs.dwPlatformld==VER_PLATFORM_WIN32_WINDOWS)
-{
-    prinrf(&quot;This is Windows 98...\n&quot;);
-    dwBaseAddr = 4 * KONEK * KONEK;
-}
-else if(vs.dwPlatformld==VER_PLATFORM_WIN32_NT)
-{
-    printf(&quot;This is windows NT...\n&quot;)
-    dwBaseAddr = 64 * KONEK;
-}</code></pre>
-<h2 id="创建进程："><a href="#创建进程：" class="headerlink" title="创建进程："></a>创建进程：</h2><p><img src="%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B.png" alt="创建进程"></p>
-<pre><code class="c++">BOOL CreateProcessA(
-  LPCSTR                lpApplicationName,      //对象名称
-  LPSTR                 lpCommandLine,          //命令行
-  LPSECURITY_ATTRIBUTES lpProcessAttributes,    //需要继承的句柄
-  LPSECURITY_ATTRIBUTES lpThreadAttributes,     //需要继承的线程句柄
-  BOOL                  bInheritHandles,        //是否继承句柄
-  DWORD                 dwCreationFlags,        //创建标志
-  LPVOID                lpEnvironment,          //使用父进程环境变量
-  LPCSTR                lpCurrentDirectory,     //使用父进程目录作为当前目录, 可以自行设置
-  LPSTARTUPINFOA        lpStartupInfo,          //STARTUPINFOW结构体 详细信息
-  LPPROCESS_INFORMATION lpProcessInformation    //PROCESSINFORMATION结构体 进程信息
-);</code></pre>
-<h2 id="进程控制："><a href="#进程控制：" class="headerlink" title="进程控制："></a>进程控制：</h2><p><img src="%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6.png" alt="进程控制"></p>
-<h3 id="遍历进程："><a href="#遍历进程：" class="headerlink" title="遍历进程："></a>遍历进程：</h3><pre><code class="c++">//创建系统进程快照
-HANDLE hProcessSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
-//获取其余进程信息
-while(bMore)
-{
-    printf(&quot;进程ID: %d\n&quot;, pc.th32ProcessID);
-    printf(&quot;进程名称: %s\n&quot;, pc.szExeFile);
-    bMore = Process32Next(hProcessSnap, &amp;pc);
-}
-//关闭系统快照
-CloseHandle(hProcessSnap);</code></pre>
-<h3 id="打开进程"><a href="#打开进程" class="headerlink" title="打开进程"></a>打开进程</h3><blockquote>
-<ul>
-<li>对于已经存在的进程需要通过OpenProcess函数打开进程并获取该进程的句柄</li>
-</ul>
-</blockquote>
-<pre><code class="c++">HANDLE OpenProcess
-(
-    //获取权限, PROCESS_ALL_ACCESS
-    DWORD dwDesiredAccess,
-    BOOL bInheritHandle, //指定句柄是否可以继承
-    DWORD dwProcessld // 进程的ID
-)</code></pre>
-<h3 id="终止进程"><a href="#终止进程" class="headerlink" title="终止进程:"></a>终止进程:</h3><blockquote>
-<ul>
-<li>进程中的一个线程调用了ExitProcess() //自杀</li>
-<li>其他进程中的一个线程调用了TerminateProcess // 它杀</li>
-</ul>
+            <h1 id="从一道简单的逆向题到入门-教程"><a href="#从一道简单的逆向题到入门-教程" class="headerlink" title="从一道简单的逆向题到入门-教程"></a>从一道简单的逆向题到入门-教程</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote>
+<p>Blog重建，丢失好多帖子，找个机会补一篇Linux的逆向分析入门，给小白入门学习用，大佬绕过。</p>
 </blockquote>
 <blockquote>
-<p>他杀:</p>
+<p>朋友喊帮忙看看,就顺手写下一篇逆向入门教程吧<br><img src="./img/%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95.png" alt="聊天记录"></p>
 </blockquote>
-<pre><code class="c++">//打开进程，获取句柄
-HANDLE hHandle = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwld);
-if(hHandle != NULL)
-{
-    //终止进程
-    TerminateProcess(hHandle, 0);
-}
-//关闭句柄
-CloseHandle(hHandle);</code></pre>
-<h2 id="模块目录与工作目录API"><a href="#模块目录与工作目录API" class="headerlink" title="模块目录与工作目录API"></a>模块目录与工作目录API</h2><pre><code class="c++">GetModuleFileName(NULL, strModule, 256) //模块目录
-GetCurrentDirectory(1000, buf) //工作目录</code></pre>
-<h2 id="其他进程相关API"><a href="#其他进程相关API" class="headerlink" title="其他进程相关API:"></a>其他进程相关API:</h2><pre><code class="c++">//获取进程PID
-GETCurrentProcessid
-//获取进程句柄
-GetCurrentProcess
-
-//获取命令行
-GetCommandLine
-//获取启动信息
-GetStartupInfo
-
-//遍历进程PID
-EnumProcesses
-//快照
-CreateToolhelp32Snapshot</code></pre>
-<h2 id="其他相关API"><a href="#其他相关API" class="headerlink" title="其他相关API"></a>其他相关API</h2><pre><code class="c++">GetNativeSystemInfo(SYSTEM_INFO systemInfo);
-GetSystemInfo();</code></pre>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h3><p>文件信息:</p>
 <blockquote>
-<p>示例:</p>
+<p><img src="./img/file-info.jpg" alt="file-info"><br>丢到IDA里面<br><img src="./img/ida1.png" alt="ida1"><br>可以看到从命令行里传入两个参数，第一个就是该执行文件的当前path，第二个就是传入另一个文件，如果存在能打开那么就将输入重定向到infile, 否则重定向到stdin，也就是标准输入。</p>
 </blockquote>
-<pre><code class="c++">int main(void)
-{
-    SYSTEM_INFO systemInfo;
-    GetNativeSystemInfo(&amp;systemInfo);
-
-    std::cout &lt;&lt; &quot;处理器个数: &quot; &lt;&lt; systemInfo.dwNumberOfProcessors &lt;&lt; std::endl
-        &lt;&lt; &quot;分配粒度: &quot; &lt;&lt; systemInfo.dwAllocationGranularity &lt;&lt; std::endl
-        &lt;&lt; &quot;分页大小: &quot; &lt;&lt; systemInfo.dwPageSize &lt;&lt; std::endl
-        &lt;&lt; &quot;最小寻址单元: &quot; &lt;&lt; systemInfo.lpMinimumApplicationAddress &lt;&lt; std::endl
-        &lt;&lt; &quot;最大寻址单元: &quot; &lt;&lt; systemInfo.lpMaximumApplicationAddress &lt;&lt; std::endl;
-
-    std::cout &lt;&lt; &quot;--&quot; &lt;&lt; systemInfo.wProcessorArchitecture &lt;&lt; &quot;--&quot; &lt;&lt; std::endl;
-    if (systemInfo.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_AMD64 || systemInfo.wProcessorArchitecture == PROCESSOR_ARCHITECTURE_ALPHA64)
-    {
-        std::cout &lt;&lt; &quot;该操作系统是64位&quot; &lt;&lt; std::endl;
-    }
-    else
-    {
-        std::cout &lt;&lt; &quot;该操作系统是32位&quot; &lt;&lt; std::endl;
-    }
-    system(&quot;pause&quot;);
-    return 0;
-}</code></pre>
+<p><code>补充：</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">变量</th>
+<th align="center">值</th>
+<th align="center">信息</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">stdin</td>
+<td align="center">0</td>
+<td align="center">标准输入</td>
+</tr>
+<tr>
+<td align="center">stdout</td>
+<td align="center">1</td>
+<td align="center">标准输出</td>
+</tr>
+<tr>
+<td align="center">stderr</td>
+<td align="center">2</td>
+<td align="center">标准错误</td>
+</tr>
+</tbody></table>
+<h3 id="initialize-bomb"><a href="#initialize-bomb" class="headerlink" title="initialize_bomb"></a>initialize_bomb</h3><blockquote>
+<p>此函数设置一个信号量<br><img src="./img/initbomb.png" alt="initialize_bomb函数"></p>
+</blockquote>
+<h3 id="read-line"><a href="#read-line" class="headerlink" title="read_line"></a>read_line</h3><blockquote>
+<p>read_line函数就对输入做一下简单的处理，读取一行。因为之前有输入有可能是从文件获取，同时获取一下环境变量GRADE_BOMB的值。<br><img src="./img/readline.png" alt="read_line"></p>
+</blockquote>
+<h3 id="phase-1"><a href="#phase-1" class="headerlink" title="phase_1"></a>phase_1</h3><blockquote>
+<p>这个就拿输入和<code>aWhyMakeTrillio</code>全局变量做了一个比较so我们直接去拿下来就行了<br><img src="./img/phase1.1.png" alt="phase1.1"><br><img src="./img/phase1.png" alt="phase_1"></p>
+</blockquote>
+<blockquote>
+<p>如果不等于这个值就会执行explode_bomb函数,直接退出程序<br><img src="./img/explode_bomb.png" alt="explode"></p>
+</blockquote>
+<h3 id="phase-2"><a href="#phase-2" class="headerlink" title="phase_2"></a>phase_2</h3><blockquote>
+<p>读入6个数，然后前三个等于后个不相等则退出<br><img src="./img/phase2.png" alt="phase_2"><br><img src="./img/phase2.2.png" alt="read_six_numbers"></p>
+</blockquote>
+<blockquote>
+<p>so 我们输入1 2 3 1 2 3就可以了</p>
+</blockquote>
+<h3 id="phase-3"><a href="#phase-3" class="headerlink" title="phase_3"></a>phase_3</h3><blockquote>
+<p>是不是看着很吓人，实际上不要慌，他就一张switch表，我们先倒着看<br><img src="./img/phase3.png" alt="phase_3"></p>
+</blockquote>
+<blockquote>
+<p>这里比较了var_11和al不相等则结束，<br><img src="./img/phase3.1.png" alt="phase3.1"></p>
+</blockquote>
+<blockquote>
+<p>这里赋值了eax为’q’,也就控制了刚才的al,同时修改了var_10为84，但是进入条件是case 1<br><img src="./img/phase3.3.png" alt="phase3.3"></p>
+</blockquote>
+<blockquote>
+<p>这里进行输入赋值由于是64位的，通常顺序是rdi, rsi, rdx, rcx, r8, r9, 栈<br><img src="./img/phase3.2.png" alt="phase3.2"></p>
+</blockquote>
+<blockquote>
+<p>结合上面的简单分析，我们需要输入 <code>1 q 84</code>就能通过，实际上还可以看看其他表是做啥都差不多</p>
+</blockquote>
+<h3 id="phase4"><a href="#phase4" class="headerlink" title="phase4"></a>phase4</h3><blockquote>
+<p>就是输入一个数，然后经过一个<code>func4</code>计算后和这个<code>0x375F00</code>比较不相等就退出，<br><img src="./img/phase4.png" alt="phase4"></p>
+</blockquote>
+<blockquote>
+<p>我们看看func4函数<br>实际上就一个递归计算阶乘很简单，imul指令是相乘嘛。<br>我们爆破一下就知道了<br><img src="./img/phase4.1.png" alt="func4"><br>可以看到结果就是10<br><img src="./img/phase4.2.png" alt="result"></p>
+</blockquote>
+<h3 id="phase5"><a href="#phase5" class="headerlink" title="phase5"></a>phase5</h3><blockquote>
+<p>就把我们的输入当作索引取这个数组里面取值然后做比较需要等于<code>ravens</code><br><img src="./img/phase5.png" alt="phase5"><br><img src="./img/phase5.1.png" alt="phase5.1"></p>
+</blockquote>
+<blockquote>
+<p>这是结果但这里有个坑，只能输入如6个字符，11是两个字符了，所以这里我们可以借pwntools来简单处理一下，比较方便<br><img src="./img/phase5.2.png" alt="phase5.2"><br><img src="./img/phase5.3.png" alt="phase5.3"><br><img src="./img/phase5.4.png" alt="phase5.4"></p>
+</blockquote>
+<h3 id="phase6"><a href="#phase6" class="headerlink" title="phase6"></a>phase6</h3><blockquote>
+<p>继续看这个函数用<code>func6</code>计算一个node后结果在循环加8，总共加8次。<br><img src="./img/phase6.png" alt="phase6"></p>
+</blockquote>
+<blockquote>
+<p>我们看看<code>func6</code>函数，看上去计算有点点复杂，不过这里有个小技巧，我们的输入没有去参加计算，而是直接比较，so我们直接动态下个断点，dump出计算好的值就可以了,在上面那个图我们可以看见计算好的结果指针放在rax里面。<br><img src="./img/func6.png" alt="func6"></p>
+</blockquote>
+<blockquote>
+<p>so,解决问题<br><img src="./img/phase6.1.png" alt="phase6.1"><br><img src="./img/crack.png" alt="crack"></p>
+</blockquote>
+<p><code>附上EXP：</code></p>
+<pre><code class="python">from pwn import *
+#
+context.log_level = &quot;DEBUG&quot;
+#
+io = process(&quot;./bomb8&quot;)
+io.recv()
+io.sendline(&quot;Why make trillions when we could make... billions?&quot;)
+io.recv()
+io.sendline(&quot;1 2 3 1 2 3&quot;)
+io.recv()
+io.sendline(&quot;1 q 84&quot;)
+io.recv()
+io.sendline(&quot;10&quot;)
+io.recv()
+io.sendline(&quot;2534\x0b1&quot;)
+io.recv()
+# gdb.attach(io)
+# io.interactive()
+io.sendline(str(0x70000008d))
+io.recv()</code></pre>
+<blockquote>
+<p>到这里我们以及成功完成了6个函数的破解，但有个细节</p>
+</blockquote>
+<blockquote>
+<p><code>phase_defused</code>看第一张图，我们发现有这个函数存在，跟进去看发现可能是个隐藏关卡<br><img src="./img/phase_defused.png" alt="phase_defused"></p>
+</blockquote>
+<blockquote>
+<p>进入此函数需要该全局变量等于6<br><img src="./img/phase_defused.1.png" alt="phase_defused.1"></p>
+</blockquote>
+<blockquote>
+<p>跟踪此变量我们发现有一个send_msg函数使用了他<br><img src="./img/phase_defused.2.png" alt="phase_defused.2"></p>
+</blockquote>
+<blockquote>
+<p>ida里面查看func_call,我并没有发现有函数调用了此函数，有可能在init函数里面动手脚，时间关系我就不在深入，有时间，我在回头看看。<br><img src="./img/func_call.png" alt="func_call"></p>
+</blockquote>
+<h3 id="题目下载"><a href="#题目下载" class="headerlink" title="题目下载"></a>题目下载</h3><p><a href="./附件/bomb8">bomb8</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -291,7 +302,7 @@ GetSystemInfo();</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Windows进程控制"><span class="toc-number">1.</span> <span class="toc-text">Windows进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序入口"><span class="toc-number">1.1.</span> <span class="toc-text">程序入口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取系统版本信息"><span class="toc-number">1.2.</span> <span class="toc-text">获取系统版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建进程："><span class="toc-number">1.3.</span> <span class="toc-text">创建进程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程控制："><span class="toc-number">1.4.</span> <span class="toc-text">进程控制：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遍历进程："><span class="toc-number">1.4.1.</span> <span class="toc-text">遍历进程：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打开进程"><span class="toc-number">1.4.2.</span> <span class="toc-text">打开进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终止进程"><span class="toc-number">1.4.3.</span> <span class="toc-text">终止进程:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块目录与工作目录API"><span class="toc-number">1.5.</span> <span class="toc-text">模块目录与工作目录API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他进程相关API"><span class="toc-number">1.6.</span> <span class="toc-text">其他进程相关API:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他相关API"><span class="toc-number">1.7.</span> <span class="toc-text">其他相关API</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从一道简单的逆向题到入门-教程"><span class="toc-number">1.</span> <span class="toc-text">从一道简单的逆向题到入门-教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初步分析"><span class="toc-number">1.2.1.</span> <span class="toc-text">初步分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#initialize-bomb"><span class="toc-number">1.2.2.</span> <span class="toc-text">initialize_bomb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read-line"><span class="toc-number">1.2.3.</span> <span class="toc-text">read_line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">phase_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-2"><span class="toc-number">1.2.5.</span> <span class="toc-text">phase_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-3"><span class="toc-number">1.2.6.</span> <span class="toc-text">phase_3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase4"><span class="toc-number">1.2.7.</span> <span class="toc-text">phase4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase5"><span class="toc-number">1.2.8.</span> <span class="toc-text">phase5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase6"><span class="toc-number">1.2.9.</span> <span class="toc-text">phase6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目下载"><span class="toc-number">1.2.10.</span> <span class="toc-text">题目下载</span></a></li></ol></li></ol></li></ol>
                 </div>
             </div>
             
