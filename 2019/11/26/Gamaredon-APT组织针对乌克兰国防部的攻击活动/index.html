@@ -11,10 +11,10 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
     <meta name="description" content="RGDZ&#39;s blog,Gamaredon-APT组织针对乌克兰国防部的攻击活动前言:
-记一次简单恶意样本分析报告
+记一次简单恶意样本分析报告,感谢空白师傅的指导
 
-样本信息
-MD5:4778869cf2564b14b6bbf4baf361469aSHA1:f673ae,"> 
+介绍:
+Gamaredon是一个俄罗斯的APT攻击组织，首次出现于2013年,主要是,"> 
     <meta name="author" content="RGDZ"> 
     <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -89,13 +89,13 @@ MD5:4778869cf2564b14b6bbf4baf361469aSHA1:f673ae,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.1k
+                    4.7k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    4 mins.
                 </span>
                 
                 
@@ -130,45 +130,121 @@ MD5:4778869cf2564b14b6bbf4baf361469aSHA1:f673ae,">
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <h1 id="Gamaredon-APT组织针对乌克兰国防部的攻击活动"><a href="#Gamaredon-APT组织针对乌克兰国防部的攻击活动" class="headerlink" title="Gamaredon-APT组织针对乌克兰国防部的攻击活动"></a>Gamaredon-APT组织针对乌克兰国防部的攻击活动</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><blockquote>
-<p>记一次简单恶意样本分析报告</p>
+<p>记一次简单恶意样本分析报告,感谢空白师傅的指导</p>
 </blockquote>
-<h2 id="样本信息"><a href="#样本信息" class="headerlink" title="样本信息"></a>样本信息</h2><blockquote>
-<p>MD5:4778869cf2564b14b6bbf4baf361469a<br>SHA1:f673ae54b5cbc525f3054933a98fcc7642c8c489<br>SHA256:47723574d99719733f87e1859e80cfbd88c5c482428344593d2d025bf2108368<br>样本名称:Запит_ГУР.docx<br>c2:<a href="http://brousework.ddns.net/" target="_blank" rel="noopener">http://brousework.ddns.net/</a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍:"></a>介绍:</h2><blockquote>
+<p>Gamaredon是一个俄罗斯的APT攻击组织，首次出现于2013年,主要是针对乌克兰进行网络间谍活动。2017年，Palo Alto披露过该组织针对乌克兰攻击活动的细节，并首次将该组织命名为Gamaredon group。<br>该组织主要利用受感染域名、动态DNS、俄罗斯和乌克兰国家代码顶级域名（ccTLD）以及俄罗斯托管服务提供商来分发其定制的恶意软件。<br>之前Gamaredon团队会使用大量使用现成的工具，经过发展，也开始定制开发相关的恶意软件，其自定义开发的恶意软件包括以下功能：</p>
+<ol>
+<li>用于下载和执行其选择的附加有效负载的机制</li>
+<li>能够扫描特定文件类型的系统驱动器</li>
+<li>捕获屏幕截图的能力</li>
+<li>能够在用户的安全上下文中远程执行系统上的命令</li>
+<li>SFX文件攻击</li>
+</ol>
 </blockquote>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><blockquote>
-<p>此样本为.docx文档类型,利用远程模板注入<br>远程模板URL: <a href="http://yotaset.ddns.net/yota.dot" target="_blank" rel="noopener">http://yotaset.ddns.net/yota.dot</a></p>
+<h2 id="样本分析"><a href="#样本分析" class="headerlink" title="样本分析"></a>样本分析</h2><p><code>样本信息</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">样本名称</th>
+<th align="center">文件大小</th>
+<th align="center">样本hash</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Запит_ГУР.docx</td>
+<td align="center">124K</td>
+<td align="center">4778869cf2564b14b6bbf4baf361469a</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>样本截图:<br><img src="./img/docx.png" alt="docx"></p>
 </blockquote>
-<h3 id="恶意远程模板信息"><a href="#恶意远程模板信息" class="headerlink" title="恶意远程模板信息:"></a>恶意远程模板信息:</h3><blockquote>
-<p>MD5:6e359f1c1d36c6a8a5f19bfb5bbafbf2<br>SHA1:4fde55ec783cae7f8067834c3d45525c00fa74d7<br>SHA256:307133e8eba9ce28ab87740954d2280ba9ad67ab72c8a0e1cde97f3ea0258b5d<br>文件名称:yota.dot</p>
-</blockquote>
-<p><img src="./img/docx.png" alt="文档内容"></p>
+<blockquote>
 <p><img src="./img/%E7%BF%BB%E8%AF%91.png" alt="翻译"></p>
-<blockquote>
-<p>可以发现这是该组织对针对乌克兰国防部的攻击活动</p>
-</blockquote>
-<p><img src="./img/oledump.png" alt="oledump"></p>
-<blockquote>
-<p>dump简单分析一下发现vbs模块</p>
 </blockquote>
 <blockquote>
-<p>简单处理提取c2地址<br><img src="./img/vbs1.png" alt="vbs1"></p>
-</blockquote>
-<p><img src="./img/vbs2.png" alt="vbs2"></p>
-<blockquote>
-<p>这里生成文件的路径，简单处理一下:AppPaths <code>\Microsoft\Windows\Start Menu\Programs\Startup\RandStrinh.exe</code></p>
+<p>可以发现这是该组织又一次针对乌克兰国防部的攻击活动且和上一次手里剑行动类似<br><img src="./img/%E6%9D%A5%E6%BA%90.png" alt="来源"></p>
 </blockquote>
 <blockquote>
-<p>写入启动文件夹，实现开机自启</p>
+<p>此样本为.docx文档类型,利用远程模板注入技术，远程加载恶意模板<br>远程模板URL: <a href="http://yotaset.ddns.net/yota.dot" target="_blank" rel="noopener">http://yotaset.ddns.net/yota.dot</a><br>yota.dot为恶意远程模板，其中包含恶意宏代码<br><img src="./img/settings.res.png" alt="settings"></p>
 </blockquote>
-<p><img src="./img/vbs3.png" alt="vbs3"></p>
+<h2 id="恶意远程模板分析"><a href="#恶意远程模板分析" class="headerlink" title="恶意远程模板分析:"></a>恶意远程模板分析:</h2><table>
+<thead>
+<tr>
+<th align="center">样本名称</th>
+<th align="center">文件大小</th>
+<th align="center">样本hash</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">yota.dot</td>
+<td align="center">48.5KB</td>
+<td align="center">6e359f1c1d36c6a8a5f19bfb5bbafbf2</td>
+</tr>
+</tbody></table>
 <blockquote>
-<p>还原生成的脚本文件，在此处进行加解密处理</p>
+<p>dump简单分析一下发现vb模块, dump下分析<br><img src="./img/oledump.png" alt="oledump"></p>
 </blockquote>
-<p><img src="./img/vbs4.png" alt="vbs4"></p>
+<h2 id="恶意vb代码模块分析"><a href="#恶意vb代码模块分析" class="headerlink" title="恶意vb代码模块分析"></a>恶意vb代码模块分析</h2><blockquote>
+<p>可以看出其中有对目标的初步信息收集,同时也有修改注册表来达到破坏宏的安全性的目的<br>C&amp;Curl:<code>http://brousework.ddns.net/计算机名_hex硬盘序列号/rebootor.php</code><br>紧接着释放vbs加载器到:<code>C:\Users\%Username%\AppData\Microsoft\Windows\Start Menu\Programs\Startup\security.vbs</code><br><img src="./img/vbs1.png" alt="vbs1"></p>
+</blockquote>
 <blockquote>
-<p>此函数进行c2通信,传入的参数为c2地址</p>
+<p>第一部分<br><img src="./img/%E9%87%8A%E6%94%BE%E5%8A%A0%E8%BD%BD%E5%99%A81.png" alt="释放加载器-(1)"></p>
 </blockquote>
-<h2 id="后期有时间更新，补上解密脚本"><a href="#后期有时间更新，补上解密脚本" class="headerlink" title="后期有时间更新，补上解密脚本"></a>后期有时间更新，补上解密脚本</h2>
+<blockquote>
+<p>第二部分<br><img src="./img/%E9%87%8A%E6%94%BE%E5%8A%A0%E8%BD%BD%E5%99%A82.png" alt="释放加载器-(2)"></p>
+</blockquote>
+<blockquote>
+<p>第三部分<br><img src="./img/%E9%87%8A%E6%94%BE%E5%8A%A0%E8%BD%BD%E5%99%A83.png" alt="释放加载器-(3)"></p>
+</blockquote>
+<blockquote>
+<p>第四部分<br><img src="./img/%E9%87%8A%E6%94%BE%E5%8A%A0%E8%BD%BD%E5%99%A84.png" alt="释放加载器-(4)"></p>
+</blockquote>
+<blockquote>
+<p>第五部分<br><img src="./img/%E9%87%8A%E6%94%BE%E5%8A%A0%E8%BD%BD%E5%99%A85.png" alt="释放加载器-(5)"></p>
+</blockquote>
+<h2 id="加载器代码分析"><a href="#加载器代码分析" class="headerlink" title="加载器代码分析"></a>加载器代码分析</h2><blockquote>
+<p>这个是和c2通信的函数,还原后便于分析<br><img src="./img/loader1.png" alt="Community"></p>
+</blockquote>
+<blockquote>
+<p>都为Encode函数,实现加密文件解密生成后执行文件后的删除<br><img src="./img/loader2.png" alt="Encode"></p>
+</blockquote>
+<blockquote>
+<p><img src="./img/loader3.png" alt="Encode"></p>
+</blockquote>
+<blockquote>
+<p>这里为Key的计算函数,通过硬盘序列号的16进制来计算生成Key<br><img src="./img/loader4.png" alt="GetKey"></p>
+</blockquote>
+<blockquote>
+<p>上面是Encode函数,用于加解迷文件,由次可以看出, 在<code>C:\Users\%Username%\AppData</code>该目录下的<code>RandStrinh.txt</code>是从c2获取到的加密文件,通过Encode,传入GetKey计算出来的密钥Key解密后删除,同时在<code>C:\Users\%Username%\AppData\Microsoft\Windows\Start Menu\Programs\Startup</code>目录下生成<code>RandStrinh.exe</code>,达到开机自启的目的</p>
+</blockquote>
+<blockquote>
+<p>实现重启来执行RandStrinh.exe<br><img src="./img/loader5.png" alt="Reboot"></p>
+</blockquote>
+<blockquote>
+<p>由于没有RandStrinh.txt,我们无法进一步分析RandStrinh.exe,此次分析就到这里</p>
+</blockquote>
+<h2 id="IOCS"><a href="#IOCS" class="headerlink" title="IOCS"></a>IOCS</h2><table>
+<thead>
+<tr>
+<th align="center">样本名称</th>
+<th align="center">文件大小</th>
+<th align="center">样本hash</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Запит_ГУР.docx</td>
+<td align="center">124K</td>
+<td align="center">4778869cf2564b14b6bbf4baf361469a</td>
+</tr>
+<tr>
+<td align="center">yota.dot</td>
+<td align="center">48.5KB</td>
+<td align="center">6e359f1c1d36c6a8a5f19bfb5bbafbf2</td>
+</tr>
+</tbody></table>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -213,7 +289,7 @@ MD5:4778869cf2564b14b6bbf4baf361469aSHA1:f673ae,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gamaredon-APT组织针对乌克兰国防部的攻击活动"><span class="toc-number">1.</span> <span class="toc-text">Gamaredon-APT组织针对乌克兰国防部的攻击活动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样本信息"><span class="toc-number">1.2.</span> <span class="toc-text">样本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.3.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#恶意远程模板信息"><span class="toc-number">1.3.1.</span> <span class="toc-text">恶意远程模板信息:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后期有时间更新，补上解密脚本"><span class="toc-number">1.4.</span> <span class="toc-text">后期有时间更新，补上解密脚本</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Gamaredon-APT组织针对乌克兰国防部的攻击活动"><span class="toc-number">1.</span> <span class="toc-text">Gamaredon-APT组织针对乌克兰国防部的攻击活动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.2.</span> <span class="toc-text">介绍:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样本分析"><span class="toc-number">1.3.</span> <span class="toc-text">样本分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#恶意远程模板分析"><span class="toc-number">1.4.</span> <span class="toc-text">恶意远程模板分析:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#恶意vb代码模块分析"><span class="toc-number">1.5.</span> <span class="toc-text">恶意vb代码模块分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加载器代码分析"><span class="toc-number">1.6.</span> <span class="toc-text">加载器代码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOCS"><span class="toc-number">1.7.</span> <span class="toc-text">IOCS</span></a></li></ol></li></ol>
                 </div>
             </div>
             
