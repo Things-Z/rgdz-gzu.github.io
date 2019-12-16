@@ -331,6 +331,9 @@ MD5
 <blockquote>
 <p>此样本的特点就是调用powershell,来开辟内存执行shellcode,这是核心。<br>其攻击流程，any,run上给出的进程图基本相同，但shellcode我没调动，就没继续跟了，如同所示:<br><img src="./img/simple1/%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="流程图"></p>
 </blockquote>
+<blockquote>
+<p>此样本的手法,还是有不错的免杀效果:<br><img src="./img/simple1/virustotal.png" alt="virustotal1"></p>
+</blockquote>
 <h2 id="样本二"><a href="#样本二" class="headerlink" title="样本二:"></a>样本二:</h2><h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析:"></a>分析:</h3><blockquote>
 <p>样本信息:</p>
 </blockquote>
@@ -485,7 +488,7 @@ public class Ovoda : SequentialWorkflowActivity
 <p>这是一个虚拟机检测,导致any.run上并没有给出进程图</p>
 </blockquote>
 <blockquote>
-<p>此样本的手法主要就是利用宏代码,Hex_Encode,base64隐藏代码,这个手法也很向APT33,此手法在virustotal上检测现在也仅有12家报毒,火绒现在已杀<br><img src="./img/simple2/virustotal.png" alt="virustotal"></p>
+<p>此样本的手法主要就是利用宏代码,Hex_Encode,base64隐藏代码,这个手法也很向APT33,此手法在virustotal上检测现在也仅有12家报毒,火绒现在已杀<br><img src="./img/simple2/virustotal.png" alt="virustotal2"></p>
 </blockquote>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><blockquote>
 <p>此次分析,针对两个样本,主要是脚本代码类型的分析,文中也许有很多地方没有讲到,而是直接上修复或整理后的代码,不得不说恶意代码分析,在脚本类型这一块主要就是混淆,高强度的混淆对分析人员来说是一个很大的挑战,需要代码功底足够扎实,因为不仅仅一种语言,各种各样的脚本,但多是大同小异,所以扎实代码功底可以让我们应付起来要轻松一些,样本一的shellcode,有时间我还会在继续调试追踪,看看能不能分析出来,win32平台上的分析,我还是菜了很多</p>

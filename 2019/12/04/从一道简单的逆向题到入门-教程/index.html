@@ -91,13 +91,13 @@ Blog重建，丢失好多帖子，找个机会补一篇Linux的逆向分析入�
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.9k
+                    7.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    7 mins.
                 </span>
                 
                 
@@ -139,10 +139,10 @@ Blog重建，丢失好多帖子，找个机会补一篇Linux的逆向分析入�
 </blockquote>
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><h3 id="初步分析"><a href="#初步分析" class="headerlink" title="初步分析"></a>初步分析</h3><p>文件信息:</p>
 <blockquote>
-<p><img src="./img/file-info.jpg" alt="file-info"><br>丢到IDA里面</p>
+<p><img src="./img/file-info.jpg" alt="file-info"></p>
 </blockquote>
 <blockquote>
-<p><img src="./img/ida1.png" alt="ida1"><br>可以看到从命令行里传入两个参数，第一个就是该执行文件的当前path，第二个就是传入另一个文件，如果存在能打开那么就将输入重定向到infile, 否则重定向到stdin，也就是标准输入。</p>
+<p>可以看到从命令行里传入两个参数，第一个就是该执行文件的当前path，第二个就是传入另一个文件，如果存在能打开那么就将输入重定向到infile, 否则重定向到stdin，也就是标准输入。<br><img src="./img/ida1.png" alt="ida1"></p>
 </blockquote>
 <p><code>补充：</code></p>
 <table>
@@ -238,6 +238,53 @@ Blog重建，丢失好多帖子，找个机会补一篇Linux的逆向分析入�
 <blockquote>
 <p><img src="./img/crack.png" alt="crack"></p>
 </blockquote>
+<blockquote>
+<p>到这里我们以及成功完成了6个函数的破解,但有个细节<br><code>phase_defused</code>看第一张图，我们发现有这个函数存在，跟进去看发现可能是个隐藏关卡<br><img src="./img/phase_defused.png" alt="phase_defused"></p>
+</blockquote>
+<h3 id="phase-defused"><a href="#phase-defused" class="headerlink" title="phase_defused"></a>phase_defused</h3><blockquote>
+<p>进入此函数需要该全局变量等于6<br><img src="./img/phase_defused.1.png" alt="phase_defused.1"></p>
+</blockquote>
+<blockquote>
+<p>我们在回头仔细去看一下read_line函数<br><img src="./img/read_line2.png" alt="read_line2"></p>
+</blockquote>
+<blockquote>
+<p>read_line里面把读入的字符串存放在这个input_strings全局变量里面,也就是每次最多读入80个字节,也就是num_strings_input就是用来计入第几次读入,也就是第6关结束,我们总的输入了6次就进入了这个隐藏关卡。</p>
+</blockquote>
+<blockquote>
+<p>我们在来看看隐藏关卡:<br><img src="./img/default_parse.jpg" alt="default_parse"></p>
+</blockquote>
+<blockquote>
+<p>先补充一些sscanf函数:</p>
+</blockquote>
+<pre><code class="c++">int sscanf(const char *buffer, const char *format, [ argument ] ...);
+// 其实很简单,就是把buffer的字符串，按照format指定的格式,解析到参数argument里面去</code></pre>
+<blockquote>
+<p>所以也就是把a1地址处的字符串,解析出一个整数，和一个字符串，其中字符串必须要等于<code>austinpowers</code>,<br>我们在看看a1的地址:<code>0x6031B0</code><br><img src="./img/a1_addr.png" alt="a1_addr"></p>
+</blockquote>
+<blockquote>
+<p>在看看read_line函数处理的input_strings的地址:<code>0x6030C0</code><br><img src="./img/input_strings_addr.png" alt="input_strings_addr"></p>
+</blockquote>
+<blockquote>
+<p>按照read_line函数的计算,<code>(0x1B0-0xC0)/0x50=3</code>,从0开始算起，也就是我们需要在第四次输入的时候，得多输入一个<code>austinpowers</code>这里前面有个空格,因为要满足<code>%d %s</code>的格式,而第四次输入整好是第四关,而他的答案也正好只是一个整数,这样我们就能进入secret_phase函数。</p>
+</blockquote>
+<blockquote>
+<p>secret_phase函数:<br><img src="./img/secret_phase.png" alt="secret_phase"></p>
+</blockquote>
+<p>补充:</p>
+<pre><code class="c++">long int strtol(const char *nptr,char **endptr,int base);
+//就是将一个字符数字,转成一个长整型</code></pre>
+<blockquote>
+<p>也就是输入一个整数,通过func7来与n1地址处的值进行计算结果等于0就能过关</p>
+</blockquote>
+<blockquote>
+<p>看看func7:<br><img src="./img/func7.png" alt="func7"></p>
+</blockquote>
+<blockquote>
+<p>其实很简单就是我们输入的数不等于0,同时等于n1即可。<br>n1：0x24<br><img src="./img/n1.png" alt="n1"></p>
+</blockquote>
+<blockquote>
+<p>Perfect result:<br><img src="./img/perfect_result.png" alt="perfect_result"></p>
+</blockquote>
 <p><code>附上EXP：</code></p>
 <pre><code class="python">from pwn import *
 #
@@ -251,30 +298,17 @@ io.sendline(&quot;1 2 3 1 2 3&quot;)
 io.recv()
 io.sendline(&quot;1 q 84&quot;)
 io.recv()
-io.sendline(&quot;10&quot;)
+io.sendline(&quot;10 austinpowers&quot;)
 io.recv()
 io.sendline(&quot;2534\x0b1&quot;)
 io.recv()
 # gdb.attach(io)
 # io.interactive()
 io.sendline(str(0x70000008d))
+io.recv()
+io.sendline(str(0x24))
 io.recv()</code></pre>
-<blockquote>
-<p>到这里我们以及成功完成了6个函数的破解，但有个细节</p>
-</blockquote>
-<blockquote>
-<p><code>phase_defused</code>看第一张图，我们发现有这个函数存在，跟进去看发现可能是个隐藏关卡<br><img src="./img/phase_defused.png" alt="phase_defused"></p>
-</blockquote>
-<blockquote>
-<p>进入此函数需要该全局变量等于6<br><img src="./img/phase_defused.1.png" alt="phase_defused.1"></p>
-</blockquote>
-<blockquote>
-<p>跟踪此变量我们发现有一个send_msg函数使用了他<br><img src="./img/phase_defused.2.png" alt="phase_defused.2"></p>
-</blockquote>
-<blockquote>
-<p>ida里面查看func_call,我并没有发现有函数调用了此函数，有可能在init函数里面动手脚，时间关系我就不在深入，有时间，我在回头看看。<br><img src="./img/func_call.png" alt="func_call"></p>
-</blockquote>
-<h3 id="题目下载"><a href="#题目下载" class="headerlink" title="题目下载"></a>题目下载</h3><p><a href="./附件/bomb8">bomb8</a></p>
+<h2 id="题目下载"><a href="#题目下载" class="headerlink" title="题目下载"></a>题目下载</h2><p><a href="./附件/bomb8">bomb8</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -320,7 +354,7 @@ io.recv()</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从一道简单的逆向题到入门-教程"><span class="toc-number">1.</span> <span class="toc-text">从一道简单的逆向题到入门-教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初步分析"><span class="toc-number">1.2.1.</span> <span class="toc-text">初步分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#initialize-bomb"><span class="toc-number">1.2.2.</span> <span class="toc-text">initialize_bomb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read-line"><span class="toc-number">1.2.3.</span> <span class="toc-text">read_line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">phase_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-2"><span class="toc-number">1.2.5.</span> <span class="toc-text">phase_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-3"><span class="toc-number">1.2.6.</span> <span class="toc-text">phase_3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase4"><span class="toc-number">1.2.7.</span> <span class="toc-text">phase4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase5"><span class="toc-number">1.2.8.</span> <span class="toc-text">phase5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase6"><span class="toc-number">1.2.9.</span> <span class="toc-text">phase6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目下载"><span class="toc-number">1.2.10.</span> <span class="toc-text">题目下载</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#从一道简单的逆向题到入门-教程"><span class="toc-number">1.</span> <span class="toc-text">从一道简单的逆向题到入门-教程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析"><span class="toc-number">1.2.</span> <span class="toc-text">分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初步分析"><span class="toc-number">1.2.1.</span> <span class="toc-text">初步分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#initialize-bomb"><span class="toc-number">1.2.2.</span> <span class="toc-text">initialize_bomb</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#read-line"><span class="toc-number">1.2.3.</span> <span class="toc-text">read_line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">phase_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-2"><span class="toc-number">1.2.5.</span> <span class="toc-text">phase_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-3"><span class="toc-number">1.2.6.</span> <span class="toc-text">phase_3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase4"><span class="toc-number">1.2.7.</span> <span class="toc-text">phase4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase5"><span class="toc-number">1.2.8.</span> <span class="toc-text">phase5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase6"><span class="toc-number">1.2.9.</span> <span class="toc-text">phase6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#phase-defused"><span class="toc-number">1.2.10.</span> <span class="toc-text">phase_defused</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目下载"><span class="toc-number">1.3.</span> <span class="toc-text">题目下载</span></a></li></ol></li></ol>
                 </div>
             </div>
             
