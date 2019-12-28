@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLAG-领取系统 - RGDZ&#39;s blog</title>
+    <title>Category: 杂记 - RGDZ&#39;s blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
-    <meta name="description" content="RGDZ&#39;s blog,FLAG-领取系统前言:
-前段时间，看见几篇帖子，分别提到一个redis数据库未授权访问，和一个pickle反序列化漏洞，这个两个问题在生产环境很常见，redis当作高速缓存来存放cookie时，序,"> 
+    <meta name="description" content="RGDZ&#39;s blog,"> 
     <meta name="author" content="RGDZ"> 
     <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -37,78 +36,132 @@
     </div>
     <span id="config-title" style="display:none">RGDZ&#39;s blog</span>
     <div id="loader"></div>
-    <div id="single">
-    <div class="scrollbar gradient-bg-rev"></div>
-<div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://rgdz-gzu.github.io">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">FLAG-领取系统</h3>
-        <div class="social">
-            <!--        <div class="like-icon">-->
-            <!--            <a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-            <!--        </div>-->
-            <div>
-                <div class="share">
-                    
-                        <a href="#" class="iconfont icon-share1"></a>
-                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
-                    
-                </div>
-            </div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="ABOUT" external="false">ABOUT</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="CATEGORIES" external="false">CATEGORIES</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="TAGS" external="false">TAGS</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="ARCHIVES" external="false">ARCHIVES</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2019 RGDZ.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
+</div>
+
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+        <div id="local-search-result" class="local-search-result-cls" data-initialise="首次搜索，正在载入索引文件，请稍后……"
+            data-start="输入关键词搜索。" data-empty="没有找到内容，请尝试更换检索词。">
+            <span>输入关键词搜索。</span>
         </div>
     </div>
 </div>
-
-    <div class="section">
-        <div class=article-header-wrapper>
-    <div class="article-header">
-        <div class="article-cover animated fadeIn" style="
-            animation-delay: 600ms;
-            animation-duration: 1.2s;
-            background-image: 
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
+        </div>
+        <ul id="menu-menu" class="menu text-menu">
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/whoami/" title="ABOUT" external="false" class="menu-link">ABOUT</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="CATEGORIES" external="false" class="menu-link">CATEGORIES</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="TAGS" external="false" class="menu-link">TAGS</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="ARCHIVES" external="false" class="menu-link">ARCHIVES</a>
+            </li>
+            
+            
+            <li class="animated fadeInDown search-bar iconfont icon-search"></li>
+            
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
                 url(/img/cover.jpg);">
         </div>
-        <div class="else">
-            <p class="animated fadeInDown">
-                
-                <a href="/categories/CTF"><b>「
-                    </b>CTF<b> 」</b></a>
-                
-                七月 08, 2019
-            </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/07/08/FLAG-%E9%A2%86%E5%8F%96%E7%B3%BB%E7%BB%9F/" title="FLAG-领取系统" class="">FLAG-领取系统</a>
-            </h3>
+    </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
             
-            <p class="post-count animated fadeInDown">
-                
-                <span>
-                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.9k
-                </span>
-                
-                
-                <span>
-                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
-                </span>
-                
-                
-                
-                <span id="busuanzi_container_page_pv">
-                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
-                    <span id="busuanzi_value_page_pv">0</span>
-                </span>
-                
-            </p>
+            <a href="/categories/杂记"><b>「
+                </b>杂记<b> 」</b></a>
+            
+            十二月 28, 2019
+        </p>
+        <h3 class="post-title animated fadeInDown">
+            <a href="/2019/12/28/%E5%BE%AE%E6%AD%A5%E7%94%B5%E9%9D%A2-%E6%94%B6%E8%8E%B7%E6%80%BB%E7%BB%93/" title="微步电面-收获总结" class="posttitle">微步电面-收获总结</a></h3>
+        
+        <p class="post-count animated fadeInDown">
+            
+            <span>
+                <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                9.4k
+            </span>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/WEB/" rel="tag">WEB</a></li></ul>
+            <span>
+                <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                9 mins.
+            </span>
             
+            
+        </p>
+        
+        
+        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A/" rel="tag">总结报告</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+        
+        <div class="md-content animated fadeIn">
+            
+            <blockquote>
+<p>前言：想着大二的寒假找机会实习，就投了微步的简历，第一次收到的电话面试，面试的李哥问到的一些问题，自己当时确实还不知道，同时总结一下面试中学到的 :)</p>
+</blockquote>
+<h3 id="自我介绍："><a href="#自我介绍：" class="headerlink" title="自我介绍："></a>自我介绍：</h3><p>一篇准备好的自我介绍很重要，面试官...</p>
+            
+            <span class="read-more"><a href="/2019/12/28/%E5%BE%AE%E6%AD%A5%E7%94%B5%E9%9D%A2-%E6%94%B6%E8%8E%B7%E6%80%BB%E7%BB%93/" title="查看全文" class="posttitle">查看全文</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
+    
 </div>
 
 <div class="screen-gradient-after">
@@ -116,119 +169,20 @@
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s"></span>
+                    <span class="typed-text"></span>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="article">
-    <div class='main'>
-        <div class="content markdown animated fadeIn">
-            <h1 id="FLAG-领取系统"><a href="#FLAG-领取系统" class="headerlink" title="FLAG-领取系统"></a>FLAG-领取系统</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><blockquote>
-<p>前段时间，看见几篇帖子，分别提到一个redis数据库未授权访问，和一个pickle反序列化漏洞，这个两个问题在生产环境很常见，redis当作高速缓存来存放cookie时，序列化字符串存为cookie对于的value可以来保存用户现场，开发人员一直认为数据库在本地，从而数据源可信，因此不做过滤，So,攻击者的突破口便在redis数据库，拿下数据库后，便可以写入exploit,从而引发反序列化漏洞，getshell。</p>
-</blockquote>
-<hr>
-<h2 id="题目考点"><a href="#题目考点" class="headerlink" title="题目考点"></a>题目考点</h2><blockquote>
-<ul>
-<li>收集信息：资料查询，nmap（端口及服务）</li>
-<li>Metasploit-framework 模块攻击redis 弱口令 预计正常拿到密码只需要5秒 </li>
-<li>基于python3-pickle模块的反序列化漏洞利用，及EXP编写</li>
-<li>nc 接收反弹shell操作</li>
-</ul>
-</blockquote>
-<hr>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h2><blockquote>
-<p>Tips: 题目提示<br>1、信息收集基本功<br>2、msf会用吗？pickle熟悉吗？<br>3、啥？你说你不会接收shell，那你装nc有啥用</p>
-</blockquote>
-<blockquote>
-<p><img src="./start.png" alt="start"></p>
-</blockquote>
-<blockquote>
-<ul>
-<li>题目上有cookie，且基于高速缓存保存用现场，则百度,谷哥 查询关键字以及深度挖掘数据后得到 redis数据库可以作为web开发中的高速缓存来使用，且redis很多时候存在未授权访问，同时密码验证速度极快。</li>
-</ul>
-</blockquote>
-<p><img src="./nmap.png" alt="namp"></p>
-<p><img src="./info_collect.png" alt="信息收集"></p>
-<blockquote>
-<ul>
-<li>尝试使用MSF来攻击，之后拿到redis数据库的密码，以及登录权限。<br><img src="./attack_1.png" alt="attack_1"></li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>继续尝试msf中的redis文件上传攻击模块，发现redis被降权无法写入文件。</li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>登录redis后发现key值为cookie,value值很想序列化后的数据流，抓包过程中发现服务器使用的python3编写。</li>
-<li>继续信息收集步骤，后发现python3，pickle模块可用于保存用户现场，但是可能存在反序列化漏洞，导致任意代码读写楼，可以本地构造poc。<br><img src="./attack_2.png" alt="attack_2"></li>
-</ul>
-</blockquote>
-<blockquote>
-<ul>
-<li>整合思路：先注册账号，使得数据库中存在对于key为cookie，构造exp向redis中key=cookie的value值为exploit,然后打开nc监听指定端口 利用改cookie登录引发反序列化漏洞，反弹shell，cat flag。<br><img src="./attack_3.png" alt="attack_3"></li>
-</ul>
-</blockquote>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls"
-                data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-            <ul id="audio-list" style="display:none">
-                
-                
-                <li title='0' data-url='/statics/chun.mp3'></li>
-                
-                    
-            </ul>
-            
-            
-            
-        </div>
-        <div class="sidebar">
-            <div class="box animated fadeInRight">
-                <div class="subbox">
-                    <img src="/img/favicon.png" height=300 width=300></img>
-                    <p>RGDZ</p>
-                    <span>潜心习安全，莫忘初心。</span>
-                    <dl>
-                        <dd><a href="https://gitee.com/rgdz-gzu/" target="_blank"><span
-                                    class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="" target="_blank"><span
-                                    class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="" target="_blank"><span
-                                    class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
-                </div>
-                <ul>
-                    <li><a href="/">11 <p>文章</p></a></li>
-                    <li><a href="/categories">7 <p>分类</p></a></li>
-                    <li><a href="/tags">27 <p>标签</p></a></li>
-                </ul>
-            </div>
-            
-            
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FLAG-领取系统"><span class="toc-number">1.</span> <span class="toc-text">FLAG-领取系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目考点"><span class="toc-number">1.2.</span> <span class="toc-text">题目考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">1.3.</span> <span class="toc-text">解题思路:</span></a></li></ol></li></ol>
-                </div>
-            </div>
-            
-            
-        </div>
+    <div id="primary">
+        
     </div>
+    
 </div>
+<div id="preview"></div>
 
-    </div>
-</div>
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

