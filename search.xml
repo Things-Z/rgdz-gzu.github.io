@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>vue学习笔记（一)</title>
+      <link href="/2020/01/12/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+      <url>/2020/01/12/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vue学习笔记（一"><a href="#vue学习笔记（一" class="headerlink" title="vue学习笔记（一)"></a>vue学习笔记（一)</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote><p>VUE火了一两年了，整好假期需要开发点东西，想画个好看的UI，顺手就把VUE学一下…</p></blockquote><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><blockquote><p>这一步比较简单，我没遇见啥问题，顺手记录一下吧。</p></blockquote><pre><code class="shell">npm install vue vue-cli -gvue ui</code></pre><blockquote><p>成功安装后，并打开vue ui管理界面如下：<br><img src="./img/vue-ui.png" alt="vue-ui"></p></blockquote><blockquote><p>成功创建项目后，会进入项目仪表盘，如图：<br><img src="./img/vue-ui-%E4%BB%AA%E8%A1%A8%E7%9B%98.png" alt="vue-ui-仪表盘"></p></blockquote><blockquote><p>之后我们可以安装一下HbuilderX编辑器，此编辑器对vue支持更好，写起来比vscode手感更加流畅。<br><img src="./img/vue-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt="vue-项目结构"></p></blockquote><blockquote><p>src里面的main.js就是入口文件，不过vue的开发模式使得我们很少回去修改mian.js,App.vue就相当于index.html,不过由于vue中使用router更方便和灵活，也使得App.vue会很少被编辑和修改，例如element-admin源代码项目结构:<br><img src="./img/vue--element-admin%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt="vue--element-admin项目结构"></p></blockquote><blockquote><p>我们基本完成安装，可以开始进一步学习。这里推荐一个bilibili上快速入门学习视频地址: <a href="https://www.bilibili.com/video/av76249419?p=1" target="_blank" rel="noopener">4个小时带你快速入门vue</a></p></blockquote><blockquote><p>视频上讲过的我就不在列举了，记录一些没有提到的，以及一些细节导致的问题，该系列后面的章节会写一些进阶的东西。</p></blockquote><h2 id="vue-动画操作"><a href="#vue-动画操作" class="headerlink" title="vue 动画操作"></a>vue 动画操作</h2><blockquote><p>先看一个简单的效果<br><img src="./img/vue-%E5%8A%A8%E7%94%BB.gif" alt="vue-动画"></p></blockquote><pre><code class="html">&lt;!-- App.vue --&gt;&lt;template&gt;  &lt;div id=&quot;app&quot;&gt;        &lt;!-- el-button 是我引入了element-ui组件库 --&gt;        &lt;!-- @click 相当于v-on:click v-on是vue指令后面跟事件就行赋予一个函数名 --&gt;        &lt;el-button @click=&quot;toggle&quot;&gt;toggle&lt;/el-button&gt;        &lt;!-- vue 官方的给出的组件 用于控制标签类的子标签过渡状态--&gt;        &lt;transition&gt;         &lt;!-- 通过v-show指令绑定一个flag变量 --&gt;            &lt;div class=&quot;chunk&quot; v-show=&quot;flag&quot;&gt;&lt;/div&gt;        &lt;/transition&gt;  &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default {    name: &#39;app&#39;,    // 由于使用的是vue-cli搭建出来的脚手架，App.vue也相当于一个组件，所以data得是一个函数    data:()=&gt;{        return {            // 这里我们返回一个object类型直接写就行，变量定义在这里            flag: true        };    },    methods:{        // 组件内部函数定义在这里，        // toggle 就是上面click触发后调用的函数        toggle: function(){            this.$data.flag = !this.$data.flag;        }    }}&lt;/script&gt;&lt;style&gt;/* 这四个就是我们可以修改的样式类，来呈现出动画*/    .v-enter,    .v-leave-to{        opacity: 0;        transform: translateX(150px);    }    .v-enter-active,    .v-leave-active{        transition: all 0.8s ease;    }    /*  */    .chunk{        margin-top: 10px;        width: 50px;        height: 50px;        background-color: #34c2ff;    }&lt;/style&gt;</code></pre><blockquote><p>一些细节我在代码注释里面写得有，上面是一个手写动画演示的例子，比较简单，但真实开发环境，特别是自己接外包时，不太可能自己手写很多动画，多是使用第三方动画库，下面给出一个例子</p></blockquote><p><img src="./img/vue-element-%E5%8A%A8%E7%94%BB.gif" alt="vue-element-动画"></p><pre><code class="html">&lt;template&gt;    &lt;div id=&quot;app&quot;&gt;        &lt;el-button @click=&quot;flag = !flag&quot;&gt;Click Me&lt;/el-button&gt;        &lt;div style=&quot;display: flex; margin-top: 20px; height: 100px;&quot;&gt;            &lt;transition name=&quot;el-zoom-in-center&quot;&gt;                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-center&lt;/div&gt;            &lt;/transition&gt;            &lt;transition name=&quot;el-zoom-in-top&quot;&gt;                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-top&lt;/div&gt;            &lt;/transition&gt;            &lt;transition name=&quot;el-zoom-in-bottom&quot;&gt;                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-bottom&lt;/div&gt;            &lt;/transition&gt;        &lt;/div&gt;        &lt;div style=&quot;margin-top: 10px; margin-bottom: 10px;&quot;&gt;&lt;/div&gt;        &lt;el-button @click=&quot;flag2 = !flag2&quot;&gt;Click Me&lt;/el-button&gt;        &lt;div style=&quot;margin-top: 20px; height: 200px;&quot;&gt;            &lt;el-collapse-transition&gt;                &lt;div v-show=&quot;flag2&quot;&gt;                    &lt;div class=&quot;transition-box&quot;&gt;el-collapse-transition&lt;/div&gt;                    &lt;div class=&quot;transition-box&quot;&gt;el-collapse-transition&lt;/div&gt;                &lt;/div&gt;            &lt;/el-collapse-transition&gt;        &lt;/div&gt;    &lt;/div&gt;&lt;/template&gt;&lt;script&gt;    export default {        name: &#39;app&#39;,        data: () =&gt; {            return {                flag: true,                flag2: true            };        },        methods: {}    }&lt;/script&gt;&lt;style&gt;    .transition-box {        margin-bottom: 10px;        width: 200px;        height: 100px;        border-radius: 4px;        background-color: #409EFF;        text-align: center;        color: #fff;        padding: 40px 20px;        box-sizing: border-box;        margin-right: 20px;    }&lt;/style&gt;</code></pre><blockquote><p>然后我们会发现，真的就复制粘贴，而且效果还不错，仅仅做一些普通的项目，对我们来说完全够用，但vue核心的地方不仅仅让我们体验到前端开发的流畅性，还有前端路由布局，axios库的网络通信。</p></blockquote><h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><blockquote><p>写到这里已经快凌晨1点半了，明后天继续写。(￣o￣) . z Z</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> element-ui </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《TCP/IP协议详解卷一》学习笔记(一)</title>
       <link href="/2020/01/04/%E3%80%8ATCP-IP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8D%B7%E4%B8%80%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/"/>
       <url>/2020/01/04/%E3%80%8ATCP-IP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8D%B7%E4%B8%80%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E4%B8%80/</url>

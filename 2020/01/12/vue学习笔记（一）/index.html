@@ -5,13 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FLAG-领取系统 - RGDZ&#39;s blog</title>
+    <title>vue学习笔记（一) - RGDZ&#39;s blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="CTF PWN 恶意文件分析 编程 WEB,"> 
-    <meta name="description" content="RGDZ&#39;s blog,FLAG-领取系统前言:
-前段时间，看见几篇帖子，分别提到一个redis数据库未授权访问，和一个pickle反序列化漏洞，这个两个问题在生产环境很常见，redis当作高速缓存来存放cookie时，序,"> 
+    <meta name="description" content="RGDZ&#39;s blog,vue学习笔记（一)前言：
+VUE火了一两年了，整好假期需要开发点东西，想画个好看的UI，顺手就把VUE学一下…
+
+环境安装
+这一步比较简单，我没遇见啥问题，顺手记录一下吧。
+
+npm instal,"> 
     <meta name="author" content="RGDZ"> 
     <link rel="alternative" href="atom.xml" title="RGDZ&#39;s blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -44,7 +49,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="https://rgdz-gzu.github.io">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">FLAG-领取系统</h3>
+        <h3 class="subtitle">vue学习笔记（一)</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" target="_blank" rel="noopener" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -74,25 +79,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/CTF"><b>「
-                    </b>CTF<b> 」</b></a>
+                <a href="/categories/前端开发"><b>「
+                    </b>前端开发<b> 」</b></a>
                 
-                七月 08, 2019
+                一月 12, 2020
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2019/07/08/FLAG-%E9%A2%86%E5%8F%96%E7%B3%BB%E7%BB%9F/" title="FLAG-领取系统" class="">FLAG-领取系统</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2020/01/12/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" title="vue学习笔记（一)" class="">vue学习笔记（一)</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    1.9k
+                    5.6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -105,7 +110,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/WEB/" rel="tag">WEB</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/element-ui/" rel="tag">element-ui</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
             
         </div>
     </div>
@@ -126,52 +131,155 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="FLAG-领取系统"><a href="#FLAG-领取系统" class="headerlink" title="FLAG-领取系统"></a>FLAG-领取系统</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><blockquote>
-<p>前段时间，看见几篇帖子，分别提到一个redis数据库未授权访问，和一个pickle反序列化漏洞，这个两个问题在生产环境很常见，redis当作高速缓存来存放cookie时，序列化字符串存为cookie对于的value可以来保存用户现场，开发人员一直认为数据库在本地，从而数据源可信，因此不做过滤，So,攻击者的突破口便在redis数据库，拿下数据库后，便可以写入exploit,从而引发反序列化漏洞，getshell。</p>
+            <h1 id="vue学习笔记（一"><a href="#vue学习笔记（一" class="headerlink" title="vue学习笔记（一)"></a>vue学习笔记（一)</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote>
+<p>VUE火了一两年了，整好假期需要开发点东西，想画个好看的UI，顺手就把VUE学一下…</p>
 </blockquote>
-<hr>
-<h2 id="题目考点"><a href="#题目考点" class="headerlink" title="题目考点"></a>题目考点</h2><blockquote>
-<ul>
-<li>收集信息：资料查询，nmap（端口及服务）</li>
-<li>Metasploit-framework 模块攻击redis 弱口令 预计正常拿到密码只需要5秒 </li>
-<li>基于python3-pickle模块的反序列化漏洞利用，及EXP编写</li>
-<li>nc 接收反弹shell操作</li>
-</ul>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><blockquote>
+<p>这一步比较简单，我没遇见啥问题，顺手记录一下吧。</p>
 </blockquote>
-<hr>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h2><blockquote>
-<p>Tips: 题目提示<br>1、信息收集基本功<br>2、msf会用吗？pickle熟悉吗？<br>3、啥？你说你不会接收shell，那你装nc有啥用</p>
+<pre><code class="shell">npm install vue vue-cli -g
+vue ui</code></pre>
+<blockquote>
+<p>成功安装后，并打开vue ui管理界面如下：<br><img src="./img/vue-ui.png" alt="vue-ui"></p>
 </blockquote>
 <blockquote>
-<p><img src="./start.png" alt="start"></p>
+<p>成功创建项目后，会进入项目仪表盘，如图：<br><img src="./img/vue-ui-%E4%BB%AA%E8%A1%A8%E7%9B%98.png" alt="vue-ui-仪表盘"></p>
 </blockquote>
 <blockquote>
-<ul>
-<li>题目上有cookie，且基于高速缓存保存用现场，则百度,谷哥 查询关键字以及深度挖掘数据后得到 redis数据库可以作为web开发中的高速缓存来使用，且redis很多时候存在未授权访问，同时密码验证速度极快。</li>
-</ul>
-</blockquote>
-<p><img src="./nmap.png" alt="namp"></p>
-<p><img src="./info_collect.png" alt="信息收集"></p>
-<blockquote>
-<ul>
-<li>尝试使用MSF来攻击，之后拿到redis数据库的密码，以及登录权限。<br><img src="./attack_1.png" alt="attack_1"></li>
-</ul>
+<p>之后我们可以安装一下HbuilderX编辑器，此编辑器对vue支持更好，写起来比vscode手感更加流畅。<br><img src="./img/vue-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt="vue-项目结构"></p>
 </blockquote>
 <blockquote>
-<ul>
-<li>继续尝试msf中的redis文件上传攻击模块，发现redis被降权无法写入文件。</li>
-</ul>
+<p>src里面的main.js就是入口文件，不过vue的开发模式使得我们很少回去修改mian.js,App.vue就相当于index.html,不过由于vue中使用router更方便和灵活，也使得App.vue会很少被编辑和修改，例如element-admin源代码项目结构:<br><img src="./img/vue--element-admin%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.png" alt="vue--element-admin项目结构"></p>
 </blockquote>
 <blockquote>
-<ul>
-<li>登录redis后发现key值为cookie,value值很想序列化后的数据流，抓包过程中发现服务器使用的python3编写。</li>
-<li>继续信息收集步骤，后发现python3，pickle模块可用于保存用户现场，但是可能存在反序列化漏洞，导致任意代码读写楼，可以本地构造poc。<br><img src="./attack_2.png" alt="attack_2"></li>
-</ul>
+<p>我们基本完成安装，可以开始进一步学习。这里推荐一个bilibili上快速入门学习视频地址: <a href="https://www.bilibili.com/video/av76249419?p=1" target="_blank" rel="noopener">4个小时带你快速入门vue</a></p>
 </blockquote>
 <blockquote>
-<ul>
-<li>整合思路：先注册账号，使得数据库中存在对于key为cookie，构造exp向redis中key=cookie的value值为exploit,然后打开nc监听指定端口 利用改cookie登录引发反序列化漏洞，反弹shell，cat flag。<br><img src="./attack_3.png" alt="attack_3"></li>
-</ul>
+<p>视频上讲过的我就不在列举了，记录一些没有提到的，以及一些细节导致的问题，该系列后面的章节会写一些进阶的东西。</p>
+</blockquote>
+<h2 id="vue-动画操作"><a href="#vue-动画操作" class="headerlink" title="vue 动画操作"></a>vue 动画操作</h2><blockquote>
+<p>先看一个简单的效果<br><img src="./img/vue-%E5%8A%A8%E7%94%BB.gif" alt="vue-动画"></p>
+</blockquote>
+<pre><code class="html">&lt;!-- App.vue --&gt;
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+        &lt;!-- el-button 是我引入了element-ui组件库 --&gt;
+        &lt;!-- @click 相当于v-on:click v-on是vue指令后面跟事件就行赋予一个函数名 --&gt;
+        &lt;el-button @click=&quot;toggle&quot;&gt;toggle&lt;/el-button&gt;
+        &lt;!-- vue 官方的给出的组件 用于控制标签类的子标签过渡状态--&gt;
+        &lt;transition&gt; 
+        &lt;!-- 通过v-show指令绑定一个flag变量 --&gt;
+            &lt;div class=&quot;chunk&quot; v-show=&quot;flag&quot;&gt;&lt;/div&gt;
+        &lt;/transition&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: &#39;app&#39;,
+    // 由于使用的是vue-cli搭建出来的脚手架，App.vue也相当于一个组件，所以data得是一个函数
+    data:()=&gt;{
+        return {
+            // 这里我们返回一个object类型直接写就行，变量定义在这里
+            flag: true
+        };
+    },
+    methods:{
+        // 组件内部函数定义在这里，
+        // toggle 就是上面click触发后调用的函数
+        toggle: function(){
+            this.$data.flag = !this.$data.flag;
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+/* 这四个就是我们可以修改的样式类，来呈现出动画*/
+    .v-enter,
+    .v-leave-to{
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    .v-enter-active,
+    .v-leave-active{
+        transition: all 0.8s ease;
+    }
+    /*  */
+    .chunk{
+        margin-top: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: #34c2ff;
+    }
+&lt;/style&gt;</code></pre>
+<blockquote>
+<p>一些细节我在代码注释里面写得有，上面是一个手写动画演示的例子，比较简单，但真实开发环境，特别是自己接外包时，不太可能自己手写很多动画，多是使用第三方动画库，下面给出一个例子</p>
+</blockquote>
+<p><img src="./img/vue-element-%E5%8A%A8%E7%94%BB.gif" alt="vue-element-动画"></p>
+<pre><code class="html">&lt;template&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;el-button @click=&quot;flag = !flag&quot;&gt;Click Me&lt;/el-button&gt;
+        &lt;div style=&quot;display: flex; margin-top: 20px; height: 100px;&quot;&gt;
+            &lt;transition name=&quot;el-zoom-in-center&quot;&gt;
+                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-center&lt;/div&gt;
+            &lt;/transition&gt;
+
+            &lt;transition name=&quot;el-zoom-in-top&quot;&gt;
+                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-top&lt;/div&gt;
+            &lt;/transition&gt;
+
+            &lt;transition name=&quot;el-zoom-in-bottom&quot;&gt;
+                &lt;div v-show=&quot;flag&quot; class=&quot;transition-box&quot;&gt;.el-zoom-in-bottom&lt;/div&gt;
+            &lt;/transition&gt;
+        &lt;/div&gt;
+        &lt;div style=&quot;margin-top: 10px; margin-bottom: 10px;&quot;&gt;&lt;/div&gt;
+        &lt;el-button @click=&quot;flag2 = !flag2&quot;&gt;Click Me&lt;/el-button&gt;
+
+        &lt;div style=&quot;margin-top: 20px; height: 200px;&quot;&gt;
+            &lt;el-collapse-transition&gt;
+                &lt;div v-show=&quot;flag2&quot;&gt;
+                    &lt;div class=&quot;transition-box&quot;&gt;el-collapse-transition&lt;/div&gt;
+                    &lt;div class=&quot;transition-box&quot;&gt;el-collapse-transition&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/el-collapse-transition&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+    export default {
+        name: &#39;app&#39;,
+
+        data: () =&gt; {
+            return {
+                flag: true,
+                flag2: true
+            };
+        },
+        methods: {}
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+    .transition-box {
+        margin-bottom: 10px;
+        width: 200px;
+        height: 100px;
+        border-radius: 4px;
+        background-color: #409EFF;
+        text-align: center;
+        color: #fff;
+        padding: 40px 20px;
+        box-sizing: border-box;
+        margin-right: 20px;
+    }
+&lt;/style&gt;</code></pre>
+<blockquote>
+<p>然后我们会发现，真的就复制粘贴，而且效果还不错，仅仅做一些普通的项目，对我们来说完全够用，但vue核心的地方不仅仅让我们体验到前端开发的流畅性，还有前端路由布局，axios库的网络通信。</p>
+</blockquote>
+<h2 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h2><blockquote>
+<p>写到这里已经快凌晨1点半了，明后天继续写。(￣o￣) . z Z</p>
 </blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
@@ -218,7 +326,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FLAG-领取系统"><span class="toc-number">1.</span> <span class="toc-text">FLAG-领取系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#题目考点"><span class="toc-number">1.2.</span> <span class="toc-text">题目考点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">1.3.</span> <span class="toc-text">解题思路:</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vue学习笔记（一"><span class="toc-number">1.</span> <span class="toc-text">vue学习笔记（一)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言："><span class="toc-number">1.1.</span> <span class="toc-text">前言：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境安装"><span class="toc-number">1.2.</span> <span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue-动画操作"><span class="toc-number">1.3.</span> <span class="toc-text">vue 动画操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结束语"><span class="toc-number">1.4.</span> <span class="toc-text">结束语</span></a></li></ol></li></ol>
                 </div>
             </div>
             
